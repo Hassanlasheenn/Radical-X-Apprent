@@ -121,15 +121,33 @@ input[type="password"]:focus {
     font-weight: 500;
     font-size: .8rem;
     color: var(--buttons-bg);
+    text-indent: 16px;
 }
 
-.right__remember-container > p:hover {
+/* signin button */
+#signin {
+    color: var(--color-text);
+    text-decoration: none;
+}
+/* signup button */
+
+#create {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+#forgot:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.right__remember-container > p > #signin:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
 
-/* login button */
+/* login & signUp button */
 
 .right__button {
     align-self: stretch;
@@ -186,4 +204,19 @@ input[type="checkbox"] {
     color: var(--color-icons);
     outline: none;
     border: none;
+}
+
+/* new user */
+
+.right__new-user {
+    border: none;
+    background: var(--white-bg);
+    color: var(--color-text);
+    display: inline-block;
+    width: 100%;
+}
+
+.right__new-user > #create:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
