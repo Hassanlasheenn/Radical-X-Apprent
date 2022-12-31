@@ -3,8 +3,12 @@ import '../styles/HomePage.css';
 import RadicalX from '../imgs/RadicallX-Black-Logo 1.svg'
 import NavLinks from '../Components/NavLinks';
 import ApprenBox from '../Components/ApprenBox';
+import { useAuth } from '../Context/Auth';
 
-const HomePage = ({ boxTitle }) => {
+const HomePage = ({ boxTitle, title }) => {
+
+  const { currentUser } = useAuth();
+
   return (
     <div className='home'>
      <div className='home__left'>
@@ -18,7 +22,7 @@ const HomePage = ({ boxTitle }) => {
         </div>
         <div className='home__user'>
           <div className='home__user-rectangle' />
-          <p className='home__user-name'>Hassan lasheen</p>
+          <p className='home__user-name'>{currentUser.email}</p>
         </div>
      </div>
      <div className='home__right'>

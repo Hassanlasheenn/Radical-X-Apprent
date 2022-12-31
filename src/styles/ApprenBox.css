@@ -40,11 +40,15 @@
     align-items: center;
 }
 
-.box__icons > svg {
+.box__icons > svg:hover {
     width: .9rem;
     height: .9rem;
     cursor: pointer;
+    stroke-width: 2;
+    stroke: var(--buttons-bg);
+    fill: none;
 }
+
 
 /* box paragraph */
 

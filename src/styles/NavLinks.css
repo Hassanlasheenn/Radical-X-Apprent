@@ -1,25 +1,32 @@
 .navLinks {
+    box-sizing: border-box;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: .2rem;
-    padding: 0 .25rem;
+    padding: .1rem .25rem;
+    background: var(--white-bg);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+}
+
+.navLinks:hover {
     background: var(--container-bg);
     border: var(--solid-border-color);
     border-radius: .7rem;
-    margin-top: 10px;
-    cursor: pointer;
+    color: var(--color-text);
 }
+
+.navLinks:hover svg {
+    stroke: var(--buttons-bg);
+}
+
 
 svg {
     width: 1rem;
     stroke: #1E1E1E;
-    stroke-width: 1.5;
-}
-
-svg:hover {
-    stroke: #793EF5;
     stroke-width: 1.5;
 }
 
@@ -30,5 +37,4 @@ svg:hover {
     font-size: .6rem;
     line-height: 1.7rem;
     letter-spacing: 0.3px;
-    color: var(--color-text);
 }
