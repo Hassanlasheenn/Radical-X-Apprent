@@ -5,15 +5,34 @@ import { Icon } from 'react-icons-kit';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye';
 import {lock} from 'react-icons-kit/feather/lock';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../Context/Auth';
 
 
 const Login = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const { login } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
  
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    try {
+      setError('');
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value)
+      navigate('/');
+    } catch {
+      setError("Incorrect email/password");
+    }
+    setLoading(false);
+  }
 
   const togglePassword = () => {
     if(type === "password") {
@@ -31,8 +50,11 @@ const Login = () => {
       <div className='right'>
         <img
           className='right__image' 
-          src={RadicalX} alt='' />
-        <form className='right__form'>
+          src={RadicalX} alt='' 
+        />
+
+        { error && <h3 id='error'>{error}</h3> }
+        <form onSubmit={handleSubmit} className='right__form'>
           <p className='right__header'>Login</p>
           <input
             className='right__input' 
@@ -61,6 +83,7 @@ const Login = () => {
             <p id='forgot'>Forgot password?</p>
           </div>
           <button
+            disabled={loading}
             className='right__button'
           >
             Login

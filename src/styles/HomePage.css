@@ -1,0 +1,118 @@
+/* homepage flex */
+
+.home {
+    height: 100vh;
+    display: flex;
+    flex: 0 0 100%;
+    background: var(--bg-page);
+}
+
+.home__left {
+    margin: .6rem 0rem .6rem .6rem;
+    flex: 0 0 10%;
+    box-shadow: 0px 12px 34px rgba(0, 0, 0, 0.04);
+    border-radius: 1.1rem;
+    background: var(--white-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* homepage navLinks container */
+
+.home__navLinks {
+    position: absolute;
+    width: 80%;
+    top: 5rem;
+    left: .8rem;
+}
+
+/* company logo */
+
+.home__left-logo {
+    width: 6.5rem;
+    position: absolute;
+    top: 1.4rem;
+    left: 1.1rem;
+}
+
+/* right container */
+
+.home__right {
+    margin: 2.8rem 6.6rem 6.27rem 3.11rem;
+    flex: 1;
+}
+
+.home__right-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home__right-title {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+}
+
+.home__right-button {
+    width: 14rem;
+    padding: .6rem .3rem;
+    color: var(--white-text);
+    background: var(--buttons-bg);
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    padding-left: 2rem;
+    text-transform: capitalize;
+}
+
+.home__right-button::before {
+    content: url('../imgs/add-square.svg');
+    position: absolute;
+    right: 295px;
+    top: 52px;
+}
+
+/* apprentice boxes */
+
+.home__boxes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+/* user */
+
+.home__user {
+    position: absolute;
+    top: 36.5rem;
+    left: .6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.home__user-rectangle {
+    width: 2rem;
+    height: 2rem;
+    background: var(--user-bg);
+    border-radius: .4rem;
+}
+
+.home__user-name {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: .6rem;
+    transform: translateX(.4rem);
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+}
