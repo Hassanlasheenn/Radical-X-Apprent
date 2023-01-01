@@ -2,8 +2,6 @@ import React from 'react';
 import '../styles/NavLinks.css';
 
 const NavLinks = ({ title, image }) => {
-
-
   return (
       <button className='navLinks'>
         <svg>{image}</svg>

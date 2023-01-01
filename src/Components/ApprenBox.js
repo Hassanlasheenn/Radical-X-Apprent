@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/ApprenBox.css';
 // icons svg
 import { BoxIcon1, BoxIcon2, BoxIcon3 } from './IconSvg';
+import Modal from './Modal';
 
 const ApprenBox = ({ boxTitle }) => {
+  const [show, setShow] = useState(false);
+
   return (
     <div className='box-container'>
         <div className='box'>
             <div className='box__title-bar'>
                 <p className='box__title'>{boxTitle}</p>
                 <div className='box__icons'>
-                    <BoxIcon1 id={"write"} />
+                    <BoxIcon1 id={"write"} onClick={() => setShow(true)} />
                     <BoxIcon2 id={"duplicate"} />
                     <BoxIcon3 id={"delete"} />
                 </div>
@@ -28,6 +31,9 @@ const ApprenBox = ({ boxTitle }) => {
                 </p>
             </div>
         </div>
+        <Modal title={"Write a message"} onClose={() => setShow(false)} show={show}>
+            <p>MODAL CONTENT</p>
+        </Modal>
     </div>
   )
 }

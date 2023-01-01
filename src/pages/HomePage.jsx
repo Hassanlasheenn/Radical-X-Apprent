@@ -7,8 +7,8 @@ import { useAuth } from '../Context/Auth';
 import { ApprenIcon, DashboardIcon, InternshipIcon, JobsIcon, SettingsIcon } from '../Components/IconSvg';
 
 const HomePage = () => {
-
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  
 
   return (
     <div className='home'>
@@ -25,6 +25,7 @@ const HomePage = () => {
           <div className='home__user-rectangle' />
           <p className='home__user-name'>{currentUser.email}</p>
         </div>
+        <button onClick={logout} className='home__user-logout'>Logout</button>
      </div>
      <div className='home__right'>
       <div className='home__right-title-bar'>

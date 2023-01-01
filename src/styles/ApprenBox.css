@@ -55,7 +55,7 @@
     stroke-width: 2;
     stroke: var(--buttons-bg);
     fill: none;
-    transition: .3s ease-out;
+    transition: all .3s;
 }
 
 

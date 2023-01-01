@@ -110,7 +110,7 @@
     left: .6rem;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .home__user-rectangle {
@@ -128,4 +128,28 @@
     transform: translateX(.4rem);
     letter-spacing: 0.3px;
     font-feature-settings: 'liga' off;
+}
+
+/* logout button */
+
+.home__user-logout {
+    position: absolute;
+    top: 37.5rem;
+    left: 2.8rem;
+    border: none;
+    background: var(--white-bg);
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: .6rem;
+    transform: translateX(.4rem);
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+}
+
+.home__user-logout:hover {
+    color: var(--buttons-bg);
+    border-bottom: var(--solid-border-color);
+    cursor: pointer;
+    transition: .3s;
 }
