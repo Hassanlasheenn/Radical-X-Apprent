@@ -4,8 +4,9 @@ import RadicalX from '../imgs/RadicallX-Black-Logo 1.svg'
 import NavLinks from '../Components/NavLinks';
 import ApprenBox from '../Components/ApprenBox';
 import { useAuth } from '../Context/Auth';
+import { ApprenIcon, DashboardIcon, InternshipIcon, JobsIcon, SettingsIcon } from '../Components/IconSvg';
 
-const HomePage = ({ boxTitle, title }) => {
+const HomePage = () => {
 
   const { currentUser } = useAuth();
 
@@ -14,11 +15,11 @@ const HomePage = ({ boxTitle, title }) => {
      <div className='home__left'>
         <img className='home__left-logo' src={RadicalX} alt='RadicalX' />
         <div className='home__navLinks'>
-          <NavLinks title={"Dashboard"} />
-          <NavLinks title={"Apprenticeships"} />
-          <NavLinks title={"Internships"} />
-          <NavLinks title={"Jobs"} />
-          <NavLinks title={"Settings"} />
+          <NavLinks title={"Dashboard"} image={<DashboardIcon />} />
+          <NavLinks title={"Apprenticeships"} image={<ApprenIcon />} />
+          <NavLinks title={"Internships"} image={<InternshipIcon />} />
+          <NavLinks title={"Jobs"} image={<JobsIcon />} />
+          <NavLinks title={"Settings"} image={<SettingsIcon />} />
         </div>
         <div className='home__user'>
           <div className='home__user-rectangle' />

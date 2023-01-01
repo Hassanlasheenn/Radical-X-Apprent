@@ -5,7 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: .2rem;
-    padding: .1rem .25rem;
+    padding: .1rem .15rem;
     background: var(--white-bg);
     color: var(--bg-color);
     border: none;
@@ -25,7 +25,8 @@
 
 
 svg {
-    width: 1rem;
+    width: 20px;
+    height: 20px;
     stroke: #1E1E1E;
     stroke-width: 1.5;
 }
@@ -36,5 +37,4 @@ svg {
     font-weight: 400;
     font-size: .6rem;
     line-height: 1.7rem;
-    letter-spacing: 0.3px;
 }

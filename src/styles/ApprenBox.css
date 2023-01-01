@@ -40,13 +40,22 @@
     align-items: center;
 }
 
-.box__icons > svg:hover {
+#write,
+#duplicate,
+#delete {
+    width: 1rem;
+    stroke: #1E1E1E;
+    stroke-width: 1.5;
+}
+
+.box__icons > #write:hover, #duplicate:hover, #delete:hover {
     width: .9rem;
     height: .9rem;
     cursor: pointer;
     stroke-width: 2;
     stroke: var(--buttons-bg);
     fill: none;
+    transition: .3s ease-out;
 }
 
 

@@ -73,6 +73,19 @@
     text-transform: capitalize;
 }
 
+.home__right-button:hover {
+    width: 14rem;
+    padding: .6rem .3rem;
+    color: var(--white-text);
+    background: #5b20d8;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    padding-left: 2rem;
+    text-transform: capitalize;
+    transition: all .3s;
+}
+
 .home__right-button::before {
     content: url('../imgs/add-square.svg');
     position: absolute;
