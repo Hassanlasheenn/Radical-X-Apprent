@@ -104,9 +104,9 @@
 
 /* user */
 
-.home__user {
-    position: absolute;
-    top: 36.5rem;
+.home__user-container {
+    position: relative;
+    top: 45rem;
     left: .6rem;
     display: flex;
     justify-content: flex-start;
@@ -134,7 +134,7 @@
 
 .home__user-logout {
     position: absolute;
-    top: 37.5rem;
+    bottom: .2rem;
     left: 2.8rem;
     border: none;
     background: var(--white-bg);

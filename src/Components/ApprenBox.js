@@ -31,8 +31,9 @@ const ApprenBox = ({ boxTitle }) => {
                 </p>
             </div>
         </div>
-        <Modal title={"Write a message"} onClose={() => setShow(false)} show={show}>
-            <p>MODAL CONTENT</p>
+        <Modal title={"Add Position"} onClose={() => setShow(false)} show={show}>
+            <p className='modal-body__title'>Enter your position</p>
+            <input className='modal-body__input' type="text" placeholder='Type here' />
         </Modal>
     </div>
   )

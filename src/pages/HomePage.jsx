@@ -5,10 +5,10 @@ import NavLinks from '../Components/NavLinks';
 import ApprenBox from '../Components/ApprenBox';
 import { useAuth } from '../Context/Auth';
 import { ApprenIcon, DashboardIcon, InternshipIcon, JobsIcon, SettingsIcon } from '../Components/IconSvg';
+import Button from '../Components/Button';
 
 const HomePage = () => {
   const { currentUser, logout } = useAuth();
-  
 
   return (
     <div className='home'>
@@ -21,16 +21,16 @@ const HomePage = () => {
           <NavLinks title={"Jobs"} image={<JobsIcon />} />
           <NavLinks title={"Settings"} image={<SettingsIcon />} />
         </div>
-        <div className='home__user'>
-          <div className='home__user-rectangle' />
-          <p className='home__user-name'>{currentUser.email}</p>
+        <div className="home__user-container">
+            <div className='home__user-rectangle' />
+            <p className='home__user-name'>{currentUser.email}</p>
+          <button onClick={logout} className='home__user-logout'>Logout</button>
         </div>
-        <button onClick={logout} className='home__user-logout'>Logout</button>
      </div>
      <div className='home__right'>
       <div className='home__right-title-bar'>
           <p className='home__right-title'>apprenticeship</p>
-          <button className='home__right-button'>create new apprenticeship</button>
+          <Button btnName={"create new apprenticeship "} />
       </div>
       <div className='home__boxes'>
         <ApprenBox boxTitle={"Mobile App Design"} />
