@@ -4,16 +4,6 @@ import CreateBox from './CreateBox';
 import { ImageIcon } from './IconSvg';
 
 const BoxContent = () => {
-    // const [file, setFile] = useState(null);
-    // const inputRef = useRef(null);
-
-    // const handleFileChange = e => {
-    //     const fileObj = setFile(URL.createObjectURL(e.target.files[0]));
-    //     if(!fileObj) {
-    //         return null;
-    //     }
-    // }
-
   return (
     <div className='boxContent'>
         <CreateBox boxTitle={"Company Logo & Apprenticeship Title"}>
@@ -28,6 +18,69 @@ const BoxContent = () => {
                 />
             </div>
         </CreateBox>
+
+        <CreateBox boxTitle={"Company Description"}>
+            <div className='boxContent__form'>
+                <input
+                    type="text" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+
+        <CreateBox boxTitle={"Apprenticeship Description"}>
+            <div className='boxContent__form'>
+                <input
+                    type="text" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+
+        <CreateBox boxTitle={"Introduce yourself, your company, and what you're building"}>
+            <div className='boxContent__form'>
+                <input
+                    type="file" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+
+        <CreateBox boxTitle={"Team Type"}>
+            <div className='boxContent__form'>
+                <input
+                    type="file" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+        <CreateBox boxTitle={"Team Roles"}>
+            <div className='boxContent__form'>
+                <input
+                    type="file" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+
+        <CreateBox boxTitle={"Team Admin"}>
+            <div className='boxContent__form'>
+                <input
+                    type="file" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+
+        <CreateBox boxTitle={"Timeline"}>
+            <div className='boxContent__form'>
+                <input
+                    type="file" 
+                    placeholder='Enter Description' 
+                />
+            </div>
+        </CreateBox>
+
     </div>
   )
 }
