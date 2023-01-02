@@ -4,29 +4,32 @@ import {
   Routes,
   Route 
 } from 'react-router-dom';
+// auth
 import { AuthProvider } from './Context/Auth';
-// pages import
+import PrivateRoute from './Components/PrivateRoute';
+// pages
 import Login from './pages/sign/Login/Login';
 import Signup from './pages/sign/SignUp/Signup';
 import HomePage from './pages/HomePage';
-import PrivateRoute from './Components/PrivateRoute';
+import CreatePage from './pages/CreatePage';
 
 
 
 function App() {
   return (
       <div className="app">
-      <Router>
-        <AuthProvider>
-          <Routes>
-           <Route exact path='/login' element={<Login />} /> 
-           <Route exact path='/signup' element={<Signup />} /> 
-           <Route element={<PrivateRoute />}>
-              <Route exact path='/' element={<HomePage />} />
-           </Route>
-          </Routes>
-        </AuthProvider>
-      </Router>
+        <Router>
+          <AuthProvider>
+            <Routes>
+            <Route exact path='/login' element={<Login />} /> 
+            <Route exact path='/signup' element={<Signup />} /> 
+            <Route element={<PrivateRoute />}>
+                <Route exact path='/' element={<HomePage />} />
+                <Route exact path='/create' element={<CreatePage />} />
+            </Route>
+            </Routes>
+          </AuthProvider>
+        </Router>
       </div>
   );
 }

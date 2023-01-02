@@ -1,0 +1,49 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white-bg);
+    padding: 0 1rem;
+    position: relative;
+    margin-top: 1rem;
+    height: 4rem;
+    border-radius: 1.3rem;
+    width: 100%;
+}
+
+#left-arrow {
+    position: absolute;
+    stroke: var(--buttons-bg);
+    stroke-width: 1.5;
+    top: 1rem;
+    cursor: pointer;
+}
+
+.navbar__back {
+    padding: .5rem;
+    background: var(--white-bg);
+    border: none;
+    margin-left: 20px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: .8rem;
+    line-height: 1.4rem;
+    cursor: pointer;
+}
+
+.navbar__name {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 24px;
+}
+
+#publish {
+    position: absolute;
+    top: 1rem;
+    right: 10.5rem;
+    fill: none;
+    stroke: #fff;
+}
