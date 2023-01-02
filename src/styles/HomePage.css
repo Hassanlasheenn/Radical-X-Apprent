@@ -64,7 +64,7 @@
 .home__right-button {
     width: 13rem;
     padding: .6rem .3rem;
-    color: var(--white-text);
+    color: var(--white-bg);
     background: var(--buttons-bg);
     border: none;
     border-radius: .5rem;

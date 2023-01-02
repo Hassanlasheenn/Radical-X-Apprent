@@ -19,16 +19,24 @@
 /* comapny logo and apprentice title */
 
 .boxContainer {
+    position: relative;
     background: var(--white-bg);
-    width: 45%;
-    height: 23%;
+    min-width: 45%;
+    height: auto;
+    padding: 1rem;
     border: var(--basic-border-color);
     border-radius: 1.5rem;
     box-shadow: var(--box-shadow);
+    transition: all .3s ease-in;
+}
+
+.boxContainer:nth-child(1) {
+    margin-top: 1rem;
 }
 
 .boxContainer:hover {
     border: var(--solid-border-color-responsive);
+    transform: scale(1.03);
     transition: all .6s ease-out;
 }
 
@@ -74,6 +82,15 @@
     gap: 1.5rem;
 }
 
+/* team type box */
+
+.boxContent__teamType {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    gap: .6rem;
+}
+
 .boxContent__rectangle-cont {
     display: flex;
     justify-content: center;
@@ -104,6 +121,7 @@ input[type="text"] {
     border: none;
     outline: none;
     padding: 1rem 0;
+    border-radius: 1rem;
     transition: all .4s ease-in-out;
 }
 
@@ -112,6 +130,8 @@ input[type="text"]:focus {
     border-radius: 1rem;
     text-indent: 1em;
     transition: all .2s ease-in-out;
+    border: none;
+    outline: none;
 }
 
 input[type="text"]::placeholder {
@@ -122,3 +142,139 @@ input[type="text"]::placeholder {
     line-height: 1.4rem;
     opacity: .3;
 }
+
+/* input file type */
+
+input[type="file"] {
+    padding: 1rem;
+    width: 100%;
+    border: var(--dashed-border-color);
+    outline: none;
+    border-radius: .4rem;
+    background: var(--bg-page);
+}
+
+
+/* team type style components */
+.team {
+    border: var(--basic-border-color);
+    width: 19em;
+    height: 7em;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team__first-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .3rem .6rem;
+    margin-bottom: 2em;
+}
+
+.team__name {
+    transform: translate(1em, -.5em);
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+/* team roles container */
+
+.role__dashedCont--roles {
+    position: absolute;
+    bottom: 2.1em;
+    left: 8.5em;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    border: var(--dashed-border-responsive);
+    padding: .2rem .4rem;
+    border-radius: .4rem;
+    background: var(--white-bg);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.role__dashedCont--roles:hover {
+    transform: scale(1.03);
+    transition: transform .3s ease-in-out;
+}
+
+.role__dashedCont-name {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: .6rem;
+    letter-spacing: 0.3px;
+    color: var(--buttons-bg);
+}
+
+#circle {
+    stroke: var(--buttons-bg);
+    stroke-width: 1;
+    fill: none;
+    width: 1.3em;
+    height: 1.3em;
+
+}
+
+/* team admin container */
+
+
+.role__dashedCont--admin {
+    position: absolute;
+    bottom: 7em;
+    left: 9em;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    border: var(--dashed-border-responsive);
+    padding: .2rem .4rem;
+    border-radius: .4rem;
+    background: var(--white-bg);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.role__dashedCont--admin:hover {
+    transform: scale(1.03);
+    transition: transform .3s ease-in-out;
+}
+
+.user__linkedin {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 50%;
+    border: var(--basic-border-color);
+    padding: .8em;
+    border-radius: 1rem;
+    transform: translateX(.9rem);
+}
+
+.user__profile {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.user__profile-name {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.user__profile-rectangle {
+    width: 4.5em;
+    height: 4.5em;
+    background: var(--user-bg);
+    border-radius: 1rem;
+}
+
+/* timeline container style */
