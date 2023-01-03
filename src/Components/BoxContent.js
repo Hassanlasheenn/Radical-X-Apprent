@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/BoxContent.css';
 import CreateBox from './CreateBox';
-import { AddCircle, CustomIcon, DataIcon, GrowthIcon, ImageIcon, KeyboardIcon, MobileIcon, MonitorIcon, PrototypeIcon } from './IconSvg';
+import { AddCircle, CustomIcon, DataIcon, GrowthIcon, ImageIcon, KeyboardIcon, MobileIcon, MonitorIcon, PrototypeIcon, UploadIcon } from './IconSvg';
 import TeamBox from './TeamBox';
 import Linkedin from '../imgs/LinkedIn logo.svg';
 import DateInput from './DateInput';
+import Modal from './Modal';
 
 const BoxContent = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <div className='boxContent'>
         <CreateBox boxTitle={"Company Logo & Apprenticeship Title"}>
@@ -45,6 +48,10 @@ const BoxContent = () => {
 
         <CreateBox boxTitle={"Introduce yourself, your company, and what you're building."}>
             <div className='boxContent__form'>
+            <div className='boxContent__input'>
+                <label className="boxContent__label">Drag n drop to upload your video</label>
+                <UploadIcon />
+            </div>
                 <input
                     type="file" 
                     placeholder='Enter Description' 
@@ -65,7 +72,7 @@ const BoxContent = () => {
         </CreateBox>
 
         <CreateBox boxTitle={"Team Roles"}>
-            <button className="role__dashedCont--roles">
+            <button onClick={() => setShow(true)} className="role__dashedCont--roles">
                 <AddCircle id={"circle"}/>
                 <p className='role__dashedCont-name'>Add Team Member</p>
             </button>
@@ -91,6 +98,10 @@ const BoxContent = () => {
                 <DateInput />
             </div>
         </CreateBox>
+
+        <Modal title={"Add Role"} onClose={() => setShow(false)} show={show} btnName={"Save"}>
+
+        </Modal>
 
     </div>
   )
