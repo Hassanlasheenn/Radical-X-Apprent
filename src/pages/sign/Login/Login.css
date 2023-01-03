@@ -179,7 +179,7 @@ input[type="password"]:focus {
 }
 
 .right__button:hover {
-    color: var(--white-text);
+    color: var(--white-bg);
     background: var(--buttons-bg);
     transition: 0.2s ease-in;
 }
@@ -229,6 +229,7 @@ input[type="checkbox"] {
     color: var(--color-icons);
     outline: none;
     border: none;
+    opacity: .6;
 }
 
 #lock2 {
@@ -238,6 +239,7 @@ input[type="checkbox"] {
     color: var(--color-icons);
     outline: none;
     border: none;
+    opacity: .6;
 }
 
 /* new user */
@@ -245,7 +247,7 @@ input[type="checkbox"] {
 .right__new-user {
     border: none;
     background: var(--white-bg);
-    color: var(--color-text);
+    color: var(--buttons-bg);
     display: inline-block;
     width: 100%;
 }

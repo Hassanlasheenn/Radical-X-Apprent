@@ -4,6 +4,7 @@ import CreateBox from './CreateBox';
 import { AddCircle, CustomIcon, DataIcon, GrowthIcon, ImageIcon, KeyboardIcon, MobileIcon, MonitorIcon, PrototypeIcon } from './IconSvg';
 import TeamBox from './TeamBox';
 import Linkedin from '../imgs/LinkedIn logo.svg';
+import DateInput from './DateInput';
 
 const BoxContent = () => {
   return (
@@ -15,6 +16,7 @@ const BoxContent = () => {
                     <ImageIcon id={"image"} />
                 </div>
                 <input
+                    id='boxInput'
                     type="text" 
                     placeholder='Enter Apprenticeship Title' 
                 />
@@ -24,6 +26,7 @@ const BoxContent = () => {
         <CreateBox boxTitle={"Company Description"}>
             <div className='boxContent__form'>
                 <input
+                    id='boxInput'
                     type="text" 
                     placeholder='Enter Description' 
                 />
@@ -33,6 +36,7 @@ const BoxContent = () => {
         <CreateBox boxTitle={"Apprenticeship Description"}>
             <div className='boxContent__form'>
                 <input
+                    id='boxInput'
                     type="text" 
                     placeholder='Enter Description' 
                 />
@@ -83,8 +87,8 @@ const BoxContent = () => {
         </CreateBox>
 
         <CreateBox boxTitle={"Timeline"}>
-            <div className='boxContent__form'>
-
+            <div className='boxContent__timeline'>
+                <DateInput />
             </div>
         </CreateBox>
 

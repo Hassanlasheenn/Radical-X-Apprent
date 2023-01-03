@@ -16,7 +16,7 @@
     background: var(--container-bg);
     border: var(--solid-border-color);
     border-radius: .7rem;
-    color: var(--color-text);
+    color: var(--buttons-bg);
 }
 
 .navLinks:hover svg {

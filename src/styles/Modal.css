@@ -99,7 +99,7 @@
     border-radius: .3rem;
     border: var(--solid-border-color-responsive);
     background: var(--buttons-bg);
-    color: var(--white-text);
+    color: var(--white-bg);
     cursor: pointer;
 
 }

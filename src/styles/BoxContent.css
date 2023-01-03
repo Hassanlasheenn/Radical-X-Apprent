@@ -116,7 +116,7 @@
 
 /* input style */
 
-input[type="text"] {
+#boxInput {
     width: 100%;
     border: none;
     outline: none;
@@ -125,7 +125,7 @@ input[type="text"] {
     transition: all .4s ease-in-out;
 }
 
-input[type="text"]:focus {
+#boxInput:focus {
     border: var(--solid-border-color-responsive);
     border-radius: 1rem;
     text-indent: 1em;
@@ -134,7 +134,7 @@ input[type="text"]:focus {
     outline: none;
 }
 
-input[type="text"]::placeholder {
+#boxInput::placeholder {
     font-family: 'Space Grotesk';
     font-style: normal;
     font-weight: 500;
@@ -278,3 +278,60 @@ input[type="file"] {
 }
 
 /* timeline container style */
+
+.dateCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    position: relative;
+}
+
+.dateCont__start, .dateCont__end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#date-start {
+    position: absolute;
+    left: 26em;
+    cursor: pointer;
+}
+
+#date-end {
+    position: absolute;
+    left: 57em;
+    cursor: pointer;
+}
+
+#start {
+    border: var(--solid-border-color-responsive);
+    height: 3em;
+    border-radius: .8rem;
+    text-indent: 1rem;
+    width: 100%;
+}
+
+#start:focus, #end:focus {
+    outline: none;
+}
+
+#start::placeholder, #end::placeholder {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: .8rem;
+    line-height: 1.4rem;
+    opacity: .8;
+}
+
+
+#end {
+    border: var(--solid-border-color-responsive);
+    height: 3em;
+    border-radius: .8rem;
+    text-indent: 1rem;
+    width: 100%;
+}
