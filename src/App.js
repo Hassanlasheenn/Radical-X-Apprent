@@ -12,6 +12,7 @@ import Login from './pages/sign/Login/Login';
 import Signup from './pages/sign/SignUp/Signup';
 import HomePage from './pages/HomePage';
 import CreatePage from './pages/CreatePage';
+import ForgotPass from './pages/sign/ForgotPass';
 
 
 
@@ -23,6 +24,7 @@ function App() {
             <Routes>
             <Route exact path='/login' element={<Login />} /> 
             <Route exact path='/signup' element={<Signup />} /> 
+            <Route exact path='/reset' element={<ForgotPass />} /> 
             <Route element={<PrivateRoute />}>
                 <Route exact path='/' element={<HomePage />} />
                 <Route exact path='/create' element={<CreatePage />} />

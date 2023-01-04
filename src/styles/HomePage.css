@@ -79,11 +79,12 @@
 }
 
 #add {
-    position: absolute;
+    position: fixed;
     top: 3.25rem;
     right: 17.7rem;
     fill: none;
     stroke: #fff;
+    flex: none;
 }
 
 /* apprentice boxes */

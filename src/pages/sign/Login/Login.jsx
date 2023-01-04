@@ -80,7 +80,9 @@ const Login = () => {
               <label>Remember me</label>
             </div>
 
-            <p id='forgot'>Forgot password?</p>
+            <p id='forgot'>
+              <Link to={'/reset'} id='forgot'>Forgot password?</Link>
+            </p>
           </div>
           <button
             disabled={loading}

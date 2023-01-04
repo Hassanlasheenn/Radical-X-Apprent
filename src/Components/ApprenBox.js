@@ -31,7 +31,7 @@ const ApprenBox = ({ boxTitle }) => {
                 </p>
             </div>
         </div>
-        <Modal title={"Add Position"} btnName={"Close"} onClose={() => setShow(false)} show={show}>
+        <Modal title={"Edit Position"} btnName={"Close"} onClose={() => setShow(false)} show={show}>
             <p className='modal-body__title'>Enter your position</p>
             <input className='modal-body__input' type="text" placeholder='Type here' />
         </Modal>

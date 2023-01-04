@@ -39,6 +39,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
 }
 
 /* header login */
@@ -139,13 +140,18 @@ input[type="password"]:focus {
 
 /* signin button */
 #signin {
-    color: var(--color-text);
+    color: var(--buttons-bg);
     text-decoration: none;
 }
 /* signup button */
 
 #create {
-    color: var(--color-text);
+    color: var(--buttons-bg);
+    text-decoration: none;
+}
+
+#forgot {
+    color: var(--buttons-bg);
     text-decoration: none;
 }
 
@@ -272,8 +278,8 @@ input[type="checkbox"] {
 #success {
     color: green;
     position: absolute;
-    top: 38em;
-    left: 37em;
+    top: 42em;
+    left: 32em;
     background-color: rgb(170, 251, 170);
     padding: .8rem 3rem;
     border-radius: 1rem;
