@@ -192,6 +192,11 @@ input[type="file"] {
     justify-content: center;
 }
 
+.team:has(input:checked) {
+    background: var(--container-bg);
+    border: var(--solid-border-color);
+}
+
 .team__first-row {
     display: flex;
     justify-content: space-between;
