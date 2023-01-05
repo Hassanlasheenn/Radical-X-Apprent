@@ -235,8 +235,8 @@ input[type="radio"]::before {
 input[type="radio"]:checked::after {
     content: url(../imgs/vuesax/bulk/Vector.svg);
     position: absolute;
-    top: .12em;
-    left: .3em;
+    top: -.05em;
+    left: -.15em;
 }
 
 
