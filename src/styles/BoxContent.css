@@ -217,7 +217,7 @@ input[type="radio"] {
     position: relative;
 }
 
-input[type="radio"]:focus {
+input[type="radio"]:checked {
     border: none;
     background: var(--container-bg);
 }
@@ -232,7 +232,7 @@ input[type="radio"]::before {
     transition: 120ms transform ease-in-out;
 }
 
-input[type="radio"]:focus::after {
+input[type="radio"]:checked::after {
     content: url(../imgs/vuesax/bulk/Vector.svg);
     position: absolute;
     top: .12em;
