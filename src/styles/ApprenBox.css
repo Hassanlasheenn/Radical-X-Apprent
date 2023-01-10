@@ -1,10 +1,9 @@
 .box-container {
     background-color: var(--white-bg);
     max-width: 25%;
-    height:29%;
+    min-height:20%;
     border-radius: .8rem;
     box-sizing: border-box;
-    margin-top: 2rem;
     border: var(--basic-border-color);
     padding: .7rem .6rem;
 }
@@ -79,4 +78,30 @@
 
 .box__text {
     color: var(--buttons-bg);
+}
+
+
+/* add box style */
+
+.box-container--empty {
+    background-color: var(--white-bg);
+    max-width: 25%;
+    min-height:20%;
+    border-radius: .8rem;
+    box-sizing: border-box;
+    border: var(--basic-border-color);
+    padding: .7rem .6rem;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.box-container--empty:hover {
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow);
+    transition: all .5s ease-in-out;
+}
+
+#plusBox {
+    transform: translateY(200%);
+    opacity: .5;
 }

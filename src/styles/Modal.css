@@ -21,7 +21,7 @@
 
 .modal-content {
     width: 400px;
-    height: 200px;
+    height: 300px;
     padding: 0 1rem;
     background-color: #fff;
     transform: translateY(-200px);
@@ -60,6 +60,11 @@
 
 /* modal body style */
 
+.modal-body__container {
+    width: 100%;
+    text-align: center;
+}
+
 .modal-body__title {
     font-family: 'Space Grotesk';
     font-style: normal;
@@ -78,7 +83,6 @@
     border: none;
     border-radius: .4rem;
     text-align: center;
-    margin-top: 1rem;
 }
 
 .modal-body__input:focus {

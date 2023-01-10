@@ -92,8 +92,10 @@
 .home__boxes {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.3rem;
+    height: 100%;
+    margin-top: 2rem;
 }
 
 /* user */

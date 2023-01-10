@@ -7,8 +7,10 @@ import { useAuth } from '../Context/Auth';
 import { AddSquare, ApprenIcon, DashboardIcon, InternshipIcon, JobsIcon, SettingsIcon } from '../Components/IconSvg';
 import Button from '../Components/Button';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
+  const { boxItems } = useSelector(store => store.appren);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   
@@ -36,8 +38,7 @@ const HomePage = () => {
           <Button btnName={"create new apprenticeship "} onClick={() => {navigate('/create')}} />
       </div>
       <div className='home__boxes'>
-        <ApprenBox boxTitle={"Mobile App Design"} />
-        <ApprenBox boxTitle={"Web App Development"} />
+        <ApprenBox /> 
       </div>
      </div>
     </div>

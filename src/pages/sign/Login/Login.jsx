@@ -5,6 +5,7 @@ import { Icon } from 'react-icons-kit';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye';
 import {lock} from 'react-icons-kit/feather/lock';
+import {mail} from 'react-icons-kit/feather/mail';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../Context/Auth';
 
@@ -56,12 +57,15 @@ const Login = () => {
         { error && <h3 id='error'>{error}</h3> }
         <form onSubmit={handleSubmit} className='right__form'>
           <p className='right__header'>Login</p>
-          <input
-            className='right__input' 
-            type="email"
-            placeholder='Email'
-            ref={emailRef}
-          />
+          <div className="right__email-container">
+            <span id="sms"><Icon icon={mail} size={20}></Icon></span>
+            <input
+              className='right__input' 
+              type="email"
+              placeholder='Email'
+              ref={emailRef}
+            />
+          </div>
           <div className='right__pass-container'>
             <span id='lock'><Icon icon={lock} size={20}></Icon></span>
             <input
@@ -74,10 +78,11 @@ const Login = () => {
           </div>
           <div className='right__remember-container'>
             <div className='right__remember'>
-              <input 
+              <input
+                name='rememberme' 
                 type="checkbox"
               />
-              <label>Remember me</label>
+              <label htmlFor='rememberme'>Remember me</label>
             </div>
 
             <p id='forgot'>
