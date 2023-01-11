@@ -32,6 +32,12 @@
     cursor: pointer;
 }
 
+#dropupArr {
+    cursor: pointer;
+}
+
+
+
 /* dropdown content */
 
 .dropdown-content {
@@ -79,4 +85,11 @@ input[type="search"]:focus {
 
 .dropdown-item:not(:last-child) {
     margin-bottom: .8em;
+}
+
+
+/* role description */
+
+.role__desc {
+    
 }

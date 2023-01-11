@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import '../styles/TeamRoles.css';
-import { DropDownArrow, ProfileIcon } from './IconSvg';
+import { DropDownArrow, DropUpArrow, ProfileIcon } from './IconSvg';
 
 
 const roles = [
@@ -49,9 +49,13 @@ const TeamRoles = () => {
             >
                 <div className="dropdown__profile-cont">
                     <span><ProfileIcon id={"profile"} /></span>
-                    <div className="dropdown-btn">{selected}</div>
+                    <div className="dropdown-btn">{selected ? selected : "Select Role"}</div>
                 </div>
-                <span><DropDownArrow id={"dropdownArr"} /></span>
+                { !open ?
+                    <DropDownArrow id={"dropdownArr"}/>
+                    :
+                    <DropUpArrow id={"dropupArr"}/>
+                }
             </div>
             {
             open &&
@@ -69,6 +73,15 @@ const TeamRoles = () => {
                 </div>
             }
         </Dropdown>
+
+        <div className="role__desc">
+            <p className="role__desc-title">Role Description</p>
+            <input
+                id='boxInput'
+                type="text" 
+                placeholder='Description' 
+            />
+        </div>
     </div>
   )
 }
