@@ -16,6 +16,7 @@
     cursor: pointer;
 }
 
+
 .dropdown__profile-cont {
     display: flex;
     align-items: center;
@@ -38,7 +39,7 @@
     border: var(--basic-border-color);
     padding: .7rem .8rem;
     width: 90%;
-    height: 150px;
+    height: 120px;
     margin: 0 auto;
     position: absolute;
     top: 50%;
@@ -71,4 +72,11 @@ input[type="search"]:focus {
 
 .dropdown-item {
     padding-left: .3em;
+    font-weight: 500;
+    font-size: .6rem;
+    cursor: pointer;
+}
+
+.dropdown-item:not(:last-child) {
+    margin-bottom: .8em;
 }

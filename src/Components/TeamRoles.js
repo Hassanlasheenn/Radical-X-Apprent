@@ -3,45 +3,69 @@ import Dropdown from './Dropdown';
 import '../styles/TeamRoles.css';
 import { DropDownArrow, ProfileIcon } from './IconSvg';
 
+
+const roles = [
+    {
+        id: 1,
+        role: "iOS Developer"
+    },
+    {
+        id: 2,
+        role: "Andriod Developer"
+    },
+    {
+        id: 3,
+        role: "Full Stack Developer"
+    },
+    {
+        id: 4,
+        role: "Back-end Developer"
+    },
+    {
+        id: 5,
+        role: "Front-end Developer"
+    }
+]
+
 const TeamRoles = () => {
     const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState("");
+    const roles = ['iOS Developer', 'Android Developer', 'Full Stack Developer', 'Back-end Developer', 'Front-end Developer']
+
+    const handleClick = () => {
+        setOpen(!open);
+    }
 
   return (
     <div className='modalRoles'>
-        <Dropdown className={"dropdown"}>
+        <Dropdown 
+            selected={selected}
+            setSelected={setSelected}
+            className={"dropdown"}
+        >
             <div 
-                onClick={() => setOpen(!open)}
+                onClick={handleClick}
                 className='dropdown__role-btn'
             >
                 <div className="dropdown__profile-cont">
                     <span><ProfileIcon id={"profile"} /></span>
-                    <div className="dropdown-btn">Choose One</div>
+                    <div className="dropdown-btn">{selected}</div>
                 </div>
                 <span><DropDownArrow id={"dropdownArr"} /></span>
             </div>
             {
             open &&
                 <div className="dropdown-content">
-                    <input 
-                        type="search"  
-                        className='dropdown-content--search'
-                        placeholder='Search'
-                    />
-                    <div className="dropdown-item">
-                       Full-stack Developer 
-                    </div>
-                    <div className="dropdown-item">
-                       Front-end Developer 
-                    </div>
-                    <div className="dropdown-item">
-                       IOS Developer 
-                    </div>
-                    <div className="dropdown-item">
-                       Back-end Developer 
-                    </div>
-                    <div className="dropdown-item">
-                       Android Developer 
-                    </div>
+                    {roles.map((role) => (
+                        <div onClick={e => {
+                            setSelected(role)
+                            setOpen(false)
+                        }} 
+                        className="dropdown-item">
+                        {role}
+                        </div>
+
+                    ))}
                 </div>
             }
         </Dropdown>
