@@ -4,6 +4,6 @@ import ApprenBoxSlice from "./features/ApprenBoxSlice";
 
 export const store = configureStore({
     reducer: {
-        appren: ApprenBoxSlice
+        appren: ApprenBoxSlice,
     }
 });

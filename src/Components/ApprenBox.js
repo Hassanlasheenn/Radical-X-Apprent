@@ -3,13 +3,13 @@ import '../styles/ApprenBox.css';
 // icons svg
 import { BoxIcon1, BoxIcon2, BoxIcon3 } from './IconSvg';
 import Modal from './Modal';
-import { erase } from '../features/ApprenBoxSlice';
+import { duplicate, erase } from '../features/ApprenBoxSlice';
 import { useDispatch } from 'react-redux';
 
 const savedTitles = localStorage.getItem('Title Name') ? JSON.parse(localStorage.getItem('Title Name')) : [];
 const savedPositions = localStorage.getItem('Position Name') ? JSON.parse(localStorage.getItem('Position Name')) : [];
 
-const ApprenBox = () => {
+const ApprenBox = ({ id }) => {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState(savedTitles);
   const [position, setPosition] = useState(savedPositions);
@@ -46,8 +46,8 @@ useEffect(() => {
                 <p className='box__title'>{title}</p>
                 <div className='box__icons'>
                     <BoxIcon1 id={"write"} onClick={() => setShow(true)} />
-                    <BoxIcon2 id={"duplicate"} onClick={() => {}} />
-                    <BoxIcon3 id={"delete"} onClick={() => {dispatch(erase())}} />
+                    <BoxIcon2 id={"duplicate"} onClick={() => {dispatch(duplicate({ id }))}} />
+                    <BoxIcon3 id={"delete"} onClick={() => {dispatch(erase(id))}} />
                 </div>
             </div>
 

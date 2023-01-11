@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
-  const { boxItems } = useSelector(store => store.appren);
+  const { boxItems } =  useSelector((store) => store.appren)
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   
@@ -38,7 +38,11 @@ const HomePage = () => {
           <Button btnName={"create new apprenticeship "} onClick={() => {navigate('/create')}} />
       </div>
       <div className='home__boxes'>
-        <ApprenBox /> 
+        {boxItems.map(box => {
+          return (
+            <ApprenBox key={box.id}  />
+          )
+        })}
       </div>
      </div>
     </div>
