@@ -35,7 +35,9 @@ const HomePage = () => {
       <div className='home__right-title-bar'>
           <p className='home__right-title'>apprenticeship</p>
           <AddSquare id={"add"} />
-          <Button btnName={"create new apprenticeship "} onClick={() => {navigate('/create')}} />
+          <Button onClick={() => {navigate('/create')}}>
+              Create New Apprenticeship
+          </Button>
       </div>
       <div className='home__boxes'>
         {boxItems.map(box => {

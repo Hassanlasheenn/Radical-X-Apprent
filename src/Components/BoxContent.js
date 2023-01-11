@@ -6,9 +6,16 @@ import TeamBox from './TeamBox';
 import Linkedin from '../imgs/LinkedIn logo.svg';
 import DateInput from './DateInput';
 import Modal from './Modal';
+import { useDispatch } from 'react-redux';
+import TeamRoles from './TeamRoles';
 
 const BoxContent = () => {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch({ type: 'changeIcon', payload: 'tick'});
+  }
 
   return (
     <div className='boxContent'>
@@ -22,6 +29,7 @@ const BoxContent = () => {
                     id='boxInput'
                     type="text" 
                     placeholder='Enter Apprenticeship Title' 
+                    onChange={handleClick}
                 />
             </div>
         </CreateBox>
@@ -100,7 +108,7 @@ const BoxContent = () => {
         </CreateBox>
 
         <Modal title={"Add Role"} onClose={() => setShow(false)} show={show} btnName={"Save"}>
-
+            <TeamRoles />
         </Modal>
 
     </div>

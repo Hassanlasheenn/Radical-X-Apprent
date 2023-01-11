@@ -13,7 +13,9 @@ const Navbar = () => {
         <BackBtn onClick={() => { navigate('/') }} />
         <p className='navbar__name'>Creating Apprenticeship</p>
         <AddSquare id={"publish"} />
-        <Button btnName={"Publish Internship"} />
+        <Button>
+          Publish Apprenticeship
+        </Button>
     </div>
   )
 }

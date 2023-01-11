@@ -133,7 +133,7 @@ export const LeftArrow = ({ id }) => {
 
 export const TickCircle = ({ id }) => {
     return (
-        <svg id={ id } width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id={ id } width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 6C2.75 7.67 2 9.75 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C10.57 2 9.2 2.3 7.97 2.85" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M15 10.38L16.12 9.25" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M7.88 12L10.62 14.75L13.17 12.21" stroke-linecap="round" stroke-linejoin="round"/>
@@ -143,7 +143,7 @@ export const TickCircle = ({ id }) => {
 
 export const UnTickCircle = ({ id }) => {
     return (
-        <svg id={ id } width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id={ id } width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.5 6C3.25 7.67 2.5 9.75 2.5 12C2.5 17.52 6.98 22 12.5 22C18.02 22 22.5 17.52 22.5 12C22.5 6.48 18.02 2 12.5 2C11.07 2 9.7 2.3 8.47 2.85" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     )
@@ -284,5 +284,24 @@ export const UploadIcon = ({ id }) => {
             <path d="M15.0249 7.34158C15.8166 7.34991 16.9166 7.34991 17.8583 7.34991C18.3333 7.34991 18.5833 6.79158 18.2499 6.45825C17.0499 5.24991 14.8999 3.07491 13.6666 1.84158C13.3249 1.49991 12.7333 1.73325 12.7333 2.20825V5.11658C12.7333 6.33325 13.7666 7.34158 15.0249 7.34158Z" fill="#778188" stroke="#fff" strokeWidth={0}/>
         </svg>
 
+    )
+}
+
+export const DropDownArrow = ({ id }) => {
+    return (
+        <svg id={id} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.5">
+            <path d="M17.9197 8.17993H11.6897H6.07975C5.11975 8.17993 4.63975 9.33993 5.31975 10.0199L10.4997 15.1999C11.3297 16.0299 12.6797 16.0299 13.5097 15.1999L15.4797 13.2299L18.6897 10.0199C19.3597 9.33993 18.8797 8.17993 17.9197 8.17993Z" fill="#292D32"/>
+            </g>
+        </svg>
+    )
+}
+
+export const ProfileIcon = ({ id }) => {
+    return (
+        <svg id={id} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.6802 3.96C16.1602 4.67 16.4402 5.52 16.4402 6.44C16.4302 8.84 14.5402 10.79 12.1602 10.87C12.0602 10.86 11.9402 10.86 11.8302 10.87C9.6202 10.8 7.8302 9.11 7.5902 6.95C7.3002 4.38 9.4102 2 11.9902 2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.9898 14.56C4.5698 16.18 4.5698 18.82 6.9898 20.43C9.7398 22.27 14.2498 22.27 16.9998 20.43C19.4198 18.81 19.4198 16.17 16.9998 14.56C14.2698 12.73 9.7598 12.73 6.9898 14.56Z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     )
 }

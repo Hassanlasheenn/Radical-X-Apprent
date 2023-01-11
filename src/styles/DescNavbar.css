@@ -27,3 +27,10 @@
 }
 
 
+#tick {
+    fill: none;
+    stroke: var(--buttons-bg);
+    stroke-width: 1.5;
+}
+
+

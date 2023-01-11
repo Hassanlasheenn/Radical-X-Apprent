@@ -1,10 +1,9 @@
 import React from 'react';
-import { UnTickCircle } from './IconSvg';
 
-const DescNavTitles = ({ title }) => {
+const DescNavTitles = ({ title, icon }) => {
   return (
     <div className='navTitle'>
-        <UnTickCircle />
+        <svg>{icon}</svg>
         <p className='navTitle__name'>{title}</p>
     </div>
   )

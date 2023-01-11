@@ -1,15 +1,20 @@
 import React from 'react';
 
-const Button = ({ btnName, onClick }) => {
+const Button = ({ onClick, children }) => {
 
-  const handleRoute = () => {
+  const handleRoute = ({ className }) => {
     if(onClick) {
         onClick()
     }
 }
   return (
     <div>
-      <button onClick={handleRoute} className='home__right-button'>{btnName}</button>
+      <button 
+        onClick={handleRoute} 
+        className={'home__right-button'}
+      >
+        {children}
+      </button>
     </div>
   )
 }

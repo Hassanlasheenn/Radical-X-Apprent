@@ -25,8 +25,8 @@ const apprenBoxSlice = createSlice({
     initialState,
     reducers: {
         duplicate: (state, action) => {
-            const { id } = action.payload;
-            const itemToDuplicate = state.boxItems.find(item => item.id === id);
+            const boxItem = action.payload;
+            const itemToDuplicate = state.boxItems.find(item => item.id === boxItem);
             const newItem = { ...itemToDuplicate, id: Date.now() };
             return { ...state, boxItems: [...state.boxItems, newItem] };
         },
