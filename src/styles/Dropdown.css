@@ -91,5 +91,10 @@ input[type="search"]:focus {
 /* role description */
 
 .role__desc {
-    
+    margin-top: 1rem;
+}
+
+.role__desc-title {
+    font-weight: 500;
+    font-size: .7rem;
 }

@@ -76,11 +76,6 @@ const TeamRoles = () => {
 
         <div className="role__desc">
             <p className="role__desc-title">Role Description</p>
-            <input
-                id='boxInput'
-                type="text" 
-                placeholder='Description' 
-            />
         </div>
     </div>
   )
