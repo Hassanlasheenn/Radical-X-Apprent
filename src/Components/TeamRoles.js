@@ -76,7 +76,13 @@ const TeamRoles = () => {
 
         <div className="role__desc">
             <p className="role__desc-title">Role Description</p>
+            <textarea 
+                id='descriptionModal'
+                type="text"
+                placeholder='Description'
+            />
         </div>
+            
     </div>
   )
 }

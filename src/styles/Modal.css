@@ -13,6 +13,7 @@
     transition: all .3s ease-in-out;
     pointer-events: none;
     backdrop-filter: blur(8px);
+    background: rgba(3, 2, 23, 0.3);
 }
 
 .modal.show {
