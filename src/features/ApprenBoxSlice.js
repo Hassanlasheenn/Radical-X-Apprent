@@ -2,16 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    boxItems: [
+    boxItems: 
+    [
         {
             id: 1,
             title: "Mobile App Development",
             position: "React Native Developer"
-        },
-        {
-            id: 2,
-            title: "Game Development",
-            position: "Game Developer"
         }
     ],
     title: '',

@@ -1,68 +1,43 @@
 import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import '../styles/TeamRoles.css';
-import { DropDownArrow, DropUpArrow, ProfileIcon } from './IconSvg';
-
-
-const roles = [
-    {
-        id: 1,
-        role: "iOS Developer"
-    },
-    {
-        id: 2,
-        role: "Andriod Developer"
-    },
-    {
-        id: 3,
-        role: "Full Stack Developer"
-    },
-    {
-        id: 4,
-        role: "Back-end Developer"
-    },
-    {
-        id: 5,
-        role: "Front-end Developer"
-    }
-]
+import { ApprenIcon, ClockIcon, DropDownArrow, DropUpArrow, ProfileIcon, StarIcon } from './IconSvg';
 
 const TeamRoles = () => {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState("");
-    const roles = ['iOS Developer', 'Android Developer', 'Full Stack Developer', 'Back-end Developer', 'Front-end Developer']
+    const [selectedRole, setSelectedRole] = useState(["Select Roles"]);
+    const [selectedSkill, setSelectedSkill] = useState(["Select Skills"]);
+    const roles = ['iOS Developer', 'Android Developer', 'Full Stack Developer', 'Back-end Developer', 'Front-end Developer'];
+    const skills = ['Swift', 'iOS', 'Objective-C', 'ARM'];
 
-    const handleClick = () => {
-        setOpen(!open);
+    // to open different dropdowns using one function through id
+    const handleClick = id => {
+        setOpen(open === id ? false : id);
     }
 
   return (
     <div className='modalRoles'>
         <Dropdown 
-            selected={selected}
-            setSelected={setSelected}
+            selectedRole={selectedRole}
+            setSelectedRole={setSelectedRole}
             className={"dropdown"}
         >
             <div 
-                onClick={handleClick}
+                onClick={() => handleClick(1)}
                 className='dropdown__role-btn'
             >
                 <div className="dropdown__profile-cont">
                     <span><ProfileIcon id={"profile"} /></span>
-                    <div className="dropdown-btn">{selected ? selected : "Select Role"}</div>
+                    <div className="dropdown-btn">{selectedRole}</div>
                 </div>
-                { !open ?
-                    <DropDownArrow id={"dropdownArr"}/>
-                    :
-                    <DropUpArrow id={"dropupArr"}/>
-                }
+                <DropDownArrow id={"dropdownArr"}/>
             </div>
             {
-            open &&
+            open === 1 &&
                 <div className="dropdown-content">
                     {roles.map((role) => (
-                        <div onClick={e => {
-                            setSelected(role)
+                        <div onClick={() => {
+                            setSelectedRole(role)
                             setOpen(false)
                         }} 
                         className="dropdown-item">
@@ -83,6 +58,100 @@ const TeamRoles = () => {
             />
         </div>
             
+        <Dropdown 
+            selectedSkill={selectedSkill}
+            setSelectedSkill={setSelectedSkill}
+            className={"dropdown"}
+        >
+        <p className='role__desc-title'>Required Skills (Select any 3)</p>
+        <div 
+            onClick={() => handleClick(2)}
+            className='dropdown__role-btn'
+        >
+            <div className="dropdown__profile-cont">
+                <span><ApprenIcon id={"Appren"} /></span>
+                <div className="dropdown-btn">{selectedSkill}</div>
+            </div>
+            <DropDownArrow id={"dropdownArr"}/>
+        </div>
+        {
+        open === 2 &&
+            <div className="dropdown-content">
+                {skills.map((skill) => (
+                    <div onClick={() => {
+                        setSelectedSkill(skill)
+                        setOpen(false)
+                        
+                        }} 
+                        className="dropdown-item"
+                    >
+                        {skill}
+                    </div>
+                    ))}
+            </div>
+        }
+    </Dropdown>
+
+    <Dropdown 
+        // selectedSkill={selectedSkill}
+        // setSelectedSkill={setSelectedSkill}
+        className={"dropdown"}
+    >
+        <p className='role__desc-title'>Complimentary Skills (Select any 3)</p>
+        <div 
+            // onClick={() => handleClick(2)}
+            className='dropdown__role-btn'
+        >
+            <div className="dropdown__profile-cont">
+                <span><StarIcon id={"Appren"} /></span>
+                <div className="dropdown-btn">{selectedSkill}</div>
+            </div>
+            <DropDownArrow id={"dropdownArr"}/>
+        </div>
+         {
+        // open === 2 &&
+        //     <div className="dropdown-content">
+        //         {skills.map((skill) => (
+        //             <div onClick={() => {
+        //                 // setSelectedSkill(skill)
+        //                 // setOpen(false)
+        //                 }} 
+        //                 className="dropdown-item"
+        //             >
+        //                 <input 
+        //                     type="checkbox" 
+        //                     id='skillsCheck' 
+        //                     value={skill}
+        //                 />
+        //                 {skill}
+        //             </div>
+        //             ))}
+        //     </div>
+        }
+    </Dropdown>
+    <div className='hours'>
+        <p className='role__desc-title'>Minimum Hours Per Week</p>
+        <div className='hours__input'>
+            <span><ClockIcon id={"clock"} /></span>
+            <input 
+                id='hoursInput'
+                type="text" 
+                placeholder='No. of hours'
+            />
+        </div>
+    </div>
+
+    <div className='hours'>
+        <p className='role__desc-title'>Location Preferences</p>
+        <div className='hours__input'>
+            <span><ClockIcon id={"clock"} /></span>
+            <input 
+                id='hoursInput'
+                type="text" 
+                placeholder='No. of hours'
+            />
+        </div>
+    </div>
     </div>
   )
 }

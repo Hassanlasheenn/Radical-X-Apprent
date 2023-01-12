@@ -3,6 +3,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+    margin-bottom: 2em;
 }
