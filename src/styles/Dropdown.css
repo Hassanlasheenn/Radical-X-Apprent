@@ -14,6 +14,12 @@
     padding: .3rem .8rem;
     border-radius: .6rem;
     cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.dropdown__role-btn:hover {
+    border: var(--solid-border-color-responsive);
+    transition: all .4s ease-in-out;
 }
 
 
@@ -32,9 +38,6 @@
     cursor: pointer;
 }
 
-#dropupArr {
-    cursor: pointer;
-}
 
 
 
@@ -102,6 +105,7 @@
     border: var(--basic-border-color);
     border-radius: .7rem;
     padding: .5rem;
+    transition: all .4s ease-in-out;
 }
 
 #descriptionModal::placeholder {
@@ -148,13 +152,14 @@
     position: relative;
 }
 
-#clock {
+#clock, #location {
     fill: none;
     stroke: var(--buttons-bg);
     stroke-width: 1.5;
     position: absolute;
     top: 1.6em;
     left: 1.1em;
+    z-index: 100;
 }
 
 #hoursInput {
@@ -167,6 +172,14 @@
     border-radius: .7rem;
     padding: .5rem;
     text-indent: 2.3em;
+    transition: all .4s ease-in-out;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#hoursInput:focus {
+    border: var(--solid-border-color-responsive);
+    transition: all .4s ease-in-out;
 }
 
 #hoursInput::placeholder {
@@ -175,4 +188,21 @@
     letter-spacing: 0.3px;
     opacity: 0.5;
     color: #1E1E1E;
+}
+
+
+/* location dropdown */
+
+.dropdown__location-btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+
+#locationDropdown {
+    position: absolute;
+    top: 1.6em;
+    right: 1.3em;
+    cursor: pointer;
 }
