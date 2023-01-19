@@ -5,7 +5,6 @@ import {
   ApprenIcon,
   ClockIcon,
   DropDownArrow,
-  DropUpArrow,
   LocationIcon,
   ProfileIcon,
   StarIcon,

@@ -173,7 +173,8 @@
     padding: .5rem;
     text-indent: 2.3em;
     transition: all .4s ease-in-out;
-    font-weight: 600;
+    font-size: .8rem;
+    font-weight: 500;
     font-family: 'Space Grotesk', sans-serif;
 }
 
