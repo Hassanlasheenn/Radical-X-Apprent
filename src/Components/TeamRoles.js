@@ -9,12 +9,15 @@ import {
   ProfileIcon,
   StarIcon,
 } from "./IconSvg";
+import countriesList from "../data/countries";
 
 const TeamRoles = () => {
   const [open, setOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState(["Select Roles"]);
   const [selectedSkill, setSelectedSkill] = useState(["Select Skills"]);
   const [selectedComp, setSelectedComp] = useState(["Select Skills"]);
+  const [search, setSearch] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   const roles = [
     "iOS Developer",
@@ -28,6 +31,20 @@ const TeamRoles = () => {
   // to open different dropdowns using one function through id
   const handleClick = (id) => {
     setOpen(open === id ? false : id);
+  };
+
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value;
+    setSearch(searchTerm);
+
+    const newSuggestions = countriesList.filter((country) =>
+      country.toLowerCase().startsWith(search.toLowerCase())
+    );
+    setSuggestions(newSuggestions);
+  };
+
+  const handleSelect = (suggestion) => {
+    console.log(suggestion);
   };
 
   return (
@@ -150,11 +167,33 @@ const TeamRoles = () => {
           <span>
             <LocationIcon id={"location"} />
           </span>
-          <div className="dropdown__location-btn">
-            <input id="hoursInput" type="text" placeholder="Select location" />
+          <div
+            onClick={() => handleClick(4)}
+            className="dropdown__location-btn"
+          >
+            <input
+              onChange={handleInputChange}
+              value={search}
+              id="hoursInput"
+              type="text"
+              placeholder="Select location"
+            />
             <DropDownArrow id={"locationDropdown"} />
           </div>
         </div>
+        {open === 4 && (
+          <div className="countries__list">
+            {suggestions.map((suggestion, index) => (
+              <li
+                className="countries"
+                key={index}
+                onClick={() => handleSelect(suggestion)}
+              >
+                <p>{suggestion}</p>
+              </li>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

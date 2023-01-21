@@ -207,3 +207,30 @@
     right: 1.3em;
     cursor: pointer;
 }
+
+
+
+/* countries style */
+
+.countries__list {
+    background-color: white;
+    width: 90%;
+    height: 40%;
+    text-align: center;
+    border: var(--basic-border-color);
+    border-radius: .6rem;
+    position: absolute;
+    right: -41em;
+    top: 36em;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.countries {
+    list-style: none;
+    padding: 1em;
+}
+
+.countries > p {
+    cursor: pointer;
+}
