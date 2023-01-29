@@ -19,9 +19,11 @@ import DateInput from "./DateInput";
 import Modal from "./Modal";
 import { useDispatch } from "react-redux";
 import TeamRoles from "./TeamRoles";
+import TeamAdmin from "./TeamAdmin";
 
 const BoxContent = () => {
-  const [show, setShow] = useState(false);
+  const [showRoles, setShowRoles] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -85,7 +87,7 @@ const BoxContent = () => {
 
       <CreateBox boxTitle={"Team Roles"}>
         <button
-          onClick={() => setShow(true)}
+          onClick={() => setShowRoles(true)}
           className="role__dashedCont--roles"
         >
           <AddCircle id={"circle"} />
@@ -94,7 +96,10 @@ const BoxContent = () => {
       </CreateBox>
 
       <CreateBox boxTitle={"Team Admin"}>
-        <button className="role__dashedCont--admin">
+        <button
+          onClick={() => setShowAdmin(true)}
+          className="role__dashedCont--admin"
+        >
           <AddCircle id={"circle"} />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
@@ -114,14 +119,25 @@ const BoxContent = () => {
         </div>
       </CreateBox>
 
-      <Modal
-        title={"Add Role"}
-        onClose={() => setShow(false)}
-        show={show}
-        btnName={"Save"}
-      >
-        <TeamRoles />
-      </Modal>
+      {showRoles ? (
+        <Modal
+          title={"Add Role"}
+          onClose={() => setShowRoles(false)}
+          show={showRoles}
+          btnName={"Save"}
+        >
+          <TeamRoles />
+        </Modal>
+      ) : (
+        <Modal
+          title={"Add Team Admin"}
+          onClose={() => setShowAdmin(false)}
+          show={showAdmin}
+          btnName={"Save"}
+        >
+          <TeamAdmin />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -187,7 +187,10 @@ const TeamRoles = () => {
               <li
                 className="countries"
                 key={index}
-                onClick={() => handleSelect(suggestion)}
+                onClick={() => {
+                  handleSelect(suggestion);
+                  setSearch(suggestion);
+                }}
               >
                 <p>{suggestion}</p>
               </li>

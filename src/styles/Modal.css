@@ -28,8 +28,8 @@
     background-color: #fff;
     transform: translateY(-200px);
     transition: all .3s ease-in-out;
-    border-radius: .7rem;
-
+    border-radius: 1.5rem;
+    border: 1px solid var(--buttons-bg);
 }
 
 .modal.show .modal-content {
@@ -54,7 +54,6 @@
 }
 
 .modal-body {
-    border-top: var(--solid-border-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
