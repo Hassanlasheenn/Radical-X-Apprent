@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "../styles/BoxContent.css";
 import CreateBox from "./CreateBox";
 import {
@@ -17,18 +17,28 @@ import TeamBox from "./TeamBox";
 import Linkedin from "../imgs/LinkedIn logo.svg";
 import DateInput from "./DateInput";
 import Modal from "./Modal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TeamRoles from "./TeamRoles";
 import TeamAdmin from "./TeamAdmin";
+import { changeIcon, selectValue, setValue } from "../features/TickSlice";
 
 const BoxContent = () => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
+  const value = useSelector(selectValue);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch({ type: "changeIcon", payload: "tick" });
-  };
+  const handleChange = useCallback(
+    (e) => {
+      dispatch(setValue(e.target.value));
+      if (e.target.value.trim().length !== 0) {
+        dispatch(changeIcon("tick"));
+      } else {
+        dispatch(changeIcon("unTick"));
+      }
+    },
+    [dispatch]
+  );
 
   return (
     <div className="boxContent">
@@ -41,8 +51,9 @@ const BoxContent = () => {
           <input
             id="boxInput"
             type="text"
+            value={value}
             placeholder="Enter Apprenticeship Title"
-            onChange={handleClick}
+            onChange={handleChange}
           />
         </div>
       </CreateBox>
