@@ -3,11 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   icons: {
     companyTitleTick: false,
-    companyDescTick: false,
+    teamTypeTick: false,
+    timeLineTick: false,
   },
   values: {
     companyTitle: "",
-    companyDesc: "",
+    teamType: false,
   },
 };
 
@@ -18,30 +19,37 @@ const tickSlice = createSlice({
     setCompanyTitle: (state, action) => {
       state.values.companyTitle = action.payload;
     },
-    setCompanyDesc: (state, action) => {
-      state.values.companyDesc = action.payload;
-    },
 
     changeTitleIcon: (state, action) => {
       state.icons.companyTitleTick = action.payload;
     },
 
-    changeDescIcon: (state, action) => {
-      state.icons.companyDescTick = action.payload;
+    setTeamType: (state, action) => {
+      state.values.teamType = action.payload;
+    },
+
+    changeTeamIcon: (state, action) => {
+      state.icons.teamTypeTick = action.payload;
+    },
+
+    changeTimeLineIcon: (state, action) => {
+      state.icons.timeLineTick = action.payload;
     },
   },
 });
 
 export const {
   changeTitleIcon,
-  changeDescIcon,
   setCompanyTitle,
-  setCompanyDesc,
+  setTeamType,
+  changeTeamIcon,
+  changeTimeLineIcon,
 } = tickSlice.actions;
 
 export const selectCompanyTitle = (state) => state.tick.values.companyTitle;
-export const selectCompanyDesc = (state) => state.tick.values.companyDesc;
 export const selectCompanyTick = (state) => state.tick.icons.companyTitleTick;
-export const selectCompanyDTick = (state) => state.tick.icons.companyDescTick;
+export const selectTeamType = (state) => state.tick.values.teamType;
+export const selectTeamTick = (state) => state.tick.icons.teamTypeTick;
+export const selectTimeLineTick = (state) => state.tick.icons.timeLineTick;
 
 export default tickSlice.reducer;

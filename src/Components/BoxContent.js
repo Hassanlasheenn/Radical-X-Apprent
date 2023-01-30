@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import "../styles/BoxContent.css";
 import CreateBox from "./CreateBox";
 import {
@@ -21,11 +21,8 @@ import { useDispatch, useSelector } from "react-redux";
 import TeamRoles from "./TeamRoles";
 import TeamAdmin from "./TeamAdmin";
 import {
-  changeDescIcon,
   changeTitleIcon,
-  selectCompanyDesc,
   selectCompanyTitle,
-  setCompanyDesc,
   setCompanyTitle,
 } from "../features/TickSlice";
 
@@ -33,17 +30,11 @@ const BoxContent = () => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const companyTitleValue = useSelector(selectCompanyTitle);
-  const companyDescValue = useSelector(selectCompanyDesc);
   const dispatch = useDispatch();
 
   const handleChange1 = (e) => {
     dispatch(setCompanyTitle(e.target.value));
     dispatch(changeTitleIcon(e.target.value.trim().length > 5));
-  };
-
-  const handleChange2 = (e) => {
-    dispatch(setCompanyDesc(e.target.value));
-    dispatch(changeDescIcon(e.target.value.trim().length > 5));
   };
 
   return (
@@ -57,28 +48,26 @@ const BoxContent = () => {
           <input
             id="boxInput"
             type="text"
-            value={companyTitleValue}
             placeholder="Enter Apprenticeship Title"
-            onChange={handleChange1}
           />
         </div>
       </CreateBox>
 
       <CreateBox boxTitle={"Company Description"}>
         <div className="boxContent__form">
-          <textarea
-            id="boxInput"
-            type="text"
-            placeholder="Enter Description"
-            value={companyDescValue}
-            onChange={handleChange2}
-          />
+          <textarea id="boxInput" type="text" placeholder="Enter Description" />
         </div>
       </CreateBox>
 
       <CreateBox boxTitle={"Apprenticeship Description"}>
         <div className="boxContent__form">
-          <input id="boxInput" type="text" placeholder="Enter Description" />
+          <input
+            id="boxInput"
+            type="text"
+            placeholder="Enter Description"
+            value={companyTitleValue}
+            onChange={handleChange1}
+          />
         </div>
       </CreateBox>
 

@@ -29,7 +29,6 @@
     font-weight: 500;
     font-size: .7rem;
     opacity: .5;
-    transition: all .3s ease-in-out;
 }
 
 .navTitle__active {
@@ -38,7 +37,6 @@
     font-weight: 500;
     font-size: .7rem;
     color: var(--buttons-bg);
-    transition: all .3s ease-in-out;
 }
 
 

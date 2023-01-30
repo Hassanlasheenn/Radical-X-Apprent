@@ -1,40 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
-    boxItems: 
-    [
-        {
-            id: 1,
-            title: "Mobile App Development",
-            position: "React Native Developer"
-        }
-    ],
-    title: '',
-    position: '',
-    isLoading: true
-}
-
+  boxItems: [
+    {
+      id: 1,
+      title: "Mobile App Development",
+      position: "React Native Developer",
+    },
+  ],
+  title: "",
+  position: "",
+  isLoading: true,
+};
 
 const apprenBoxSlice = createSlice({
-    name: 'apprenBox',
-    initialState,
-    reducers: {
-        duplicate: (state, action) => {
-            const boxItem = action.payload;
-            const itemToDuplicate = state.boxItems.find(item => item.id === boxItem);
-            const newItem = { ...itemToDuplicate, id: Date.now() };
-            return { ...state, boxItems: [...state.boxItems, newItem] };
-        },
+  name: "apprenBox",
+  initialState,
+  reducers: {
+    duplicate: (state, action) => {
+      const boxItem = action.payload;
+      const itemToDuplicate = state.boxItems.find(
+        (item) => item.id === boxItem
+      );
+      const newItem = { ...itemToDuplicate, id: Date.now() };
+      return { ...state, boxItems: [...state.boxItems, newItem] };
+    },
 
-        erase: (state, action) => {
-            const boxId = action.payload;
-            const index = state.boxItems.filter(item => item.id === boxId);
-            if (index >= 0) {
-              state.boxItems.splice(index, 1);
-            }
-        },
-    }
+    erase: (state, action) => {
+      const boxId = action.payload;
+      const index = state.boxItems.filter((item) => item.id === boxId);
+      if (index >= 0) {
+        state.boxItems.splice(index, 1);
+      }
+    },
+  },
 });
 
 export const { duplicate, erase } = apprenBoxSlice.actions;
