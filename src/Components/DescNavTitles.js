@@ -1,15 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIcon } from "../features/TickSlice";
-import { TickCircle, UnTickCircle } from "./IconSvg";
 
-const DescNavTitles = ({ title }) => {
-  const icon = useSelector(selectIcon);
-
+const DescNavTitles = ({ title, icon, className }) => {
   return (
     <div className="navTitle">
-      <svg>{icon ? <TickCircle id={"clock"} /> : <UnTickCircle />}</svg>
-      <p className={icon ? "navTitle__active" : "navTitle__name"}>{title}</p>
+      <svg>{icon}</svg>
+      <p className={className}>{title}</p>
     </div>
   );
 };

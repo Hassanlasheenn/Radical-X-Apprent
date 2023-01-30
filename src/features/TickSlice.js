@@ -1,25 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isTicked: false,
-  value: "",
+  icons: {
+    companyTitleTick: false,
+    companyDescTick: false,
+  },
+  values: {
+    companyTitle: "",
+    companyDesc: "",
+  },
 };
 
 const tickSlice = createSlice({
   name: "tickSign",
   initialState,
   reducers: {
-    setValue: (state, action) => {
-      state.value = action.payload;
+    setCompanyTitle: (state, action) => {
+      state.values.companyTitle = action.payload;
     },
-    changeIcon: (state, action) => {
-      state.isTicked = action.payload;
+    setCompanyDesc: (state, action) => {
+      state.values.companyDesc = action.payload;
+    },
+
+    changeTitleIcon: (state, action) => {
+      state.icons.companyTitleTick = action.payload;
+    },
+
+    changeDescIcon: (state, action) => {
+      state.icons.companyDescTick = action.payload;
     },
   },
 });
 
-export const { changeIcon, setValue } = tickSlice.actions;
-export const selectValue = (state) => state.tick.value;
-export const selectIcon = (state) => state.tick.isTicked;
+export const {
+  changeTitleIcon,
+  changeDescIcon,
+  setCompanyTitle,
+  setCompanyDesc,
+} = tickSlice.actions;
+
+export const selectCompanyTitle = (state) => state.tick.values.companyTitle;
+export const selectCompanyDesc = (state) => state.tick.values.companyDesc;
+export const selectCompanyTick = (state) => state.tick.icons.companyTitleTick;
+export const selectCompanyDTick = (state) => state.tick.icons.companyDescTick;
 
 export default tickSlice.reducer;

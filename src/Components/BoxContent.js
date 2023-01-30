@@ -20,21 +20,31 @@ import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import TeamRoles from "./TeamRoles";
 import TeamAdmin from "./TeamAdmin";
-import { changeIcon, selectValue, setValue } from "../features/TickSlice";
+import {
+  changeDescIcon,
+  changeTitleIcon,
+  selectCompanyDesc,
+  selectCompanyTitle,
+  setCompanyDesc,
+  setCompanyTitle,
+} from "../features/TickSlice";
 
 const BoxContent = () => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
-  const value = useSelector(selectValue);
+  const companyTitleValue = useSelector(selectCompanyTitle);
+  const companyDescValue = useSelector(selectCompanyDesc);
   const dispatch = useDispatch();
 
-  const handleChange = useCallback(
-    (e) => {
-      dispatch(setValue(e.target.value));
-      dispatch(changeIcon(e.target.value.trim().length !== 0));
-    },
-    [dispatch]
-  );
+  const handleChange1 = (e) => {
+    dispatch(setCompanyTitle(e.target.value));
+    dispatch(changeTitleIcon(e.target.value.trim().length > 5));
+  };
+
+  const handleChange2 = (e) => {
+    dispatch(setCompanyDesc(e.target.value));
+    dispatch(changeDescIcon(e.target.value.trim().length > 5));
+  };
 
   return (
     <div className="boxContent">
@@ -47,21 +57,21 @@ const BoxContent = () => {
           <input
             id="boxInput"
             type="text"
-            value={value}
+            value={companyTitleValue}
             placeholder="Enter Apprenticeship Title"
-            onChange={handleChange}
+            onChange={handleChange1}
           />
         </div>
       </CreateBox>
 
       <CreateBox boxTitle={"Company Description"}>
         <div className="boxContent__form">
-          <input
+          <textarea
             id="boxInput"
             type="text"
             placeholder="Enter Description"
-            value={value}
-            onChange={handleChange}
+            value={companyDescValue}
+            onChange={handleChange2}
           />
         </div>
       </CreateBox>
