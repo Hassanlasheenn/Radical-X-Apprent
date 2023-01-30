@@ -26,6 +26,14 @@
     /* opacity: .3; */
 }
 
+.navTitle__active {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: .7rem;
+    color: var(--buttons-bg);
+}
+
 
 #tick {
     fill: none;

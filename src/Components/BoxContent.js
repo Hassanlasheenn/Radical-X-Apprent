@@ -31,11 +31,7 @@ const BoxContent = () => {
   const handleChange = useCallback(
     (e) => {
       dispatch(setValue(e.target.value));
-      if (e.target.value.trim().length !== 0) {
-        dispatch(changeIcon("tick"));
-      } else {
-        dispatch(changeIcon("unTick"));
-      }
+      dispatch(changeIcon(e.target.value.trim().length !== 0));
     },
     [dispatch]
   );
@@ -60,7 +56,13 @@ const BoxContent = () => {
 
       <CreateBox boxTitle={"Company Description"}>
         <div className="boxContent__form">
-          <input id="boxInput" type="text" placeholder="Enter Description" />
+          <input
+            id="boxInput"
+            type="text"
+            placeholder="Enter Description"
+            value={value}
+            onChange={handleChange}
+          />
         </div>
       </CreateBox>
 

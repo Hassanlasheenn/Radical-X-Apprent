@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  icon: "unTick",
+  isTicked: false,
   value: "",
 };
 
@@ -12,18 +12,14 @@ const tickSlice = createSlice({
     setValue: (state, action) => {
       state.value = action.payload;
     },
-    changeIcon: (state) => {
-      if (state.icon === "unTick") {
-        state.icon = "tick";
-      } else {
-        state.icon = "unTick";
-      }
+    changeIcon: (state, action) => {
+      state.isTicked = action.payload;
     },
   },
 });
 
 export const { changeIcon, setValue } = tickSlice.actions;
-export const selectValue = (state) => state.value;
-export const selectIcon = (state) => state.icon;
+export const selectValue = (state) => state.tick.value;
+export const selectIcon = (state) => state.tick.isTicked;
 
 export default tickSlice.reducer;

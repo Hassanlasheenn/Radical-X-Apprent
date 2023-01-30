@@ -5,12 +5,11 @@ import { TickCircle, UnTickCircle } from "./IconSvg";
 
 const DescNavTitles = ({ title }) => {
   const icon = useSelector(selectIcon);
-  const dispatch = useDispatch();
 
   return (
     <div className="navTitle">
-      <svg>{icon === "tick" ? <TickCircle /> : <UnTickCircle />}</svg>
-      <p className="navTitle__name">{title}</p>
+      <svg>{icon ? <TickCircle id={"clock"} /> : <UnTickCircle />}</svg>
+      <p className={icon ? "navTitle__active" : "navTitle__name"}>{title}</p>
     </div>
   );
 };
