@@ -21,9 +21,12 @@ import { useDispatch, useSelector } from "react-redux";
 import TeamRoles from "./TeamRoles";
 import TeamAdmin from "./TeamAdmin";
 import {
+  changeAdminIcon,
   changeTitleIcon,
   selectCompanyTitle,
+  selectTeamAdmin,
   setCompanyTitle,
+  setTeamAdmin,
 } from "../features/TickSlice";
 import { addUser } from "../features/AdminSlice";
 
@@ -32,6 +35,7 @@ const BoxContent = () => {
   const [showAdmin, setShowAdmin] = useState(false);
 
   const companyTitleValue = useSelector(selectCompanyTitle);
+  const adminUsers = useSelector(selectTeamAdmin);
   const users = useSelector((state) => state.admin.admins);
   const userName = useSelector((state) => state.admin.name);
   const dispatch = useDispatch();
@@ -41,6 +45,14 @@ const BoxContent = () => {
   const handleChange1 = (e) => {
     dispatch(setCompanyTitle(e.target.value));
     dispatch(changeTitleIcon(e.target.value.trim().length > 5));
+  };
+
+  const handleAdminUsers = () => {
+    if (users.length > 0) {
+      dispatch(setTeamAdmin(adminUsers));
+    } else {
+      dispatch(setTeamAdmin([]));
+    }
   };
 
   return (
@@ -121,7 +133,7 @@ const BoxContent = () => {
           <AddCircle id={"circle"} />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
-        <div className="user__container">
+        <div className="user__container" onChange={handleAdminUsers}>
           {users.map((user) => (
             <div className="user__linkedin">
               <div className="user__profile">
@@ -157,6 +169,7 @@ const BoxContent = () => {
           onClose={() => {
             setShowAdmin(false);
             dispatch(addUser({ userName }));
+            dispatch(changeAdminIcon(true));
           }}
           show={showAdmin}
           btnName={"Save"}

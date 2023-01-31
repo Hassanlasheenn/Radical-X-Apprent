@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import {
+  selectAdminTick,
   selectCompanyTick,
   selectTeamTick,
   selectTimeLineTick,
@@ -13,6 +14,7 @@ const DescNavbar = () => {
   const companyTick = useSelector(selectCompanyTick);
   const teamTypeTick = useSelector(selectTeamTick);
   const dateTick = useSelector(selectTimeLineTick);
+  const adminTick = useSelector(selectAdminTick);
 
   return (
     <div className="desc">
@@ -27,7 +29,11 @@ const DescNavbar = () => {
         className={teamTypeTick ? "navTitle__active" : "navTitle__name"}
       />
       <DescNavTitles title={"Team Role"} icon={<UnTickCircle />} />
-      <DescNavTitles title={"Team Admin"} icon={<UnTickCircle />} />
+      <DescNavTitles
+        title={"Team Admin"}
+        icon={adminTick ? <TickCircle id={"clock"} /> : <UnTickCircle />}
+        className={adminTick ? "navTitle__active" : "navTitle__name"}
+      />
       <DescNavTitles
         title={"Timeline"}
         icon={dateTick ? <TickCircle id={"clock"} /> : <UnTickCircle />}
