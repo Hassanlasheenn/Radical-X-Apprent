@@ -299,9 +299,9 @@ input[type="radio"]:checked::after {
 
 
 .role__dashedCont--admin {
-    position: absolute;
-    bottom: 7em;
-    left: 9em;
+    position: relative;
+    bottom: 3em;
+    left: 7.3em;
     display: flex;
     align-items: center;
     gap: .5em;
