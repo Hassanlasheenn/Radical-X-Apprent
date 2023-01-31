@@ -25,13 +25,18 @@ import {
   selectCompanyTitle,
   setCompanyTitle,
 } from "../features/TickSlice";
+import { addUser } from "../features/AdminSlice";
 
 const BoxContent = () => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
 
   const companyTitleValue = useSelector(selectCompanyTitle);
+  const users = useSelector((state) => state.admin.admins);
+  const userName = useSelector((state) => state.admin.name);
   const dispatch = useDispatch();
+
+  console.log(users);
 
   const handleChange1 = (e) => {
     dispatch(setCompanyTitle(e.target.value));
@@ -116,13 +121,18 @@ const BoxContent = () => {
           <AddCircle id={"circle"} />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
-
-        <div className="user__linkedin">
-          <div className="user__profile">
-            <div className="user__profile-rectangle" />
-            <p className="user__profile-name">John McKinsey</p>
-          </div>
-          <img src={Linkedin} alt="linkedin logo" />
+        <div className="user__container">
+          {users.map((user) => (
+            <div className="user__linkedin">
+              <div className="user__profile">
+                <div className="user__profile-rectangle" />
+                <p key={user.userName} className="user__profile-name">
+                  {user.userName}
+                </p>
+              </div>
+              <img src={Linkedin} alt="linkedin logo" />
+            </div>
+          ))}
         </div>
       </CreateBox>
 
@@ -144,7 +154,10 @@ const BoxContent = () => {
       ) : (
         <Modal
           title={"Add Team Admin"}
-          onClose={() => setShowAdmin(false)}
+          onClose={() => {
+            setShowAdmin(false);
+            dispatch(addUser({ userName }));
+          }}
           show={showAdmin}
           btnName={"Save"}
         >

@@ -318,12 +318,19 @@ input[type="radio"]:checked::after {
     transition: transform .3s ease-in-out;
 }
 
+.user__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+}
+
 .user__linkedin {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 50%;
+    min-width: 45%;
     border: var(--basic-border-color);
     padding: .8em;
     border-radius: 1rem;
