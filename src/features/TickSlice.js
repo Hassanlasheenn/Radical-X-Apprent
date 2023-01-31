@@ -4,7 +4,6 @@ const initialState = {
   icons: {
     companyTitleTick: false,
     teamTypeTick: false,
-    timeLineTick: false,
   },
   values: {
     companyTitle: "",
@@ -31,10 +30,6 @@ const tickSlice = createSlice({
     changeTeamIcon: (state, action) => {
       state.icons.teamTypeTick = action.payload;
     },
-
-    changeTimeLineIcon: (state, action) => {
-      state.icons.timeLineTick = action.payload;
-    },
   },
 });
 
@@ -50,6 +45,5 @@ export const selectCompanyTitle = (state) => state.tick.values.companyTitle;
 export const selectCompanyTick = (state) => state.tick.icons.companyTitleTick;
 export const selectTeamType = (state) => state.tick.values.teamType;
 export const selectTeamTick = (state) => state.tick.icons.teamTypeTick;
-export const selectTimeLineTick = (state) => state.tick.icons.timeLineTick;
 
 export default tickSlice.reducer;
