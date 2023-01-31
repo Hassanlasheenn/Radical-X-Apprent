@@ -97,7 +97,8 @@
 /* close button style */
 
 .modal-footer {
-    transform: translateX(-10px);
+    transform: translateX(-2em);
+    position: relative;
 }
 
 .button {
@@ -109,3 +110,16 @@
     cursor: pointer;
 
 }
+
+.modal-closeBtn {
+    background: var(--white-bg);
+    border: none;
+}
+
+#closeX {
+    stroke-width: 0;
+    position: absolute;
+    top: .2em;
+    left: 4.5em;
+    cursor: pointer;
+}  

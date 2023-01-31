@@ -157,7 +157,7 @@ const BoxContent = () => {
       {showRoles ? (
         <Modal
           title={"Add Role"}
-          onClose={() => setShowRoles(false)}
+          onCloseModal={() => setShowRoles(false)}
           show={showRoles}
           btnName={"Save"}
         >
@@ -166,11 +166,11 @@ const BoxContent = () => {
       ) : (
         <Modal
           title={"Add Team Admin"}
-          onClose={() => {
-            setShowAdmin(false);
+          onSave={() => {
             dispatch(addUser({ userName }));
             dispatch(changeAdminIcon(true));
           }}
+          onCloseModal={() => setShowAdmin(false)}
           show={showAdmin}
           btnName={"Save"}
         >
