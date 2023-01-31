@@ -29,6 +29,7 @@ import {
 const BoxContent = () => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
+
   const companyTitleValue = useSelector(selectCompanyTitle);
   const dispatch = useDispatch();
 

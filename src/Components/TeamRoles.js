@@ -134,9 +134,10 @@ const TeamRoles = () => {
         </div>
         {open === 3 && (
           <div className="dropdown-content">
-            {skills.map((skill) => (
+            {skills.map((skill, index) => (
               <>
                 <div
+                  key={index}
                   onClick={() => {
                     setSelectedComp(skill);
                     setOpen(false);
