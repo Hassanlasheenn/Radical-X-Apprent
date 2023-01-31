@@ -3,6 +3,7 @@ import "../styles/BoxContent.css";
 import CreateBox from "./CreateBox";
 import {
   AddCircle,
+  CloseIcon,
   CustomIcon,
   DataIcon,
   GrowthIcon,
@@ -33,14 +34,13 @@ import { addUser } from "../features/AdminSlice";
 const BoxContent = () => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState(null);
 
   const companyTitleValue = useSelector(selectCompanyTitle);
   const adminUsers = useSelector(selectTeamAdmin);
   const users = useSelector((state) => state.admin.admins);
   const userName = useSelector((state) => state.admin.name);
   const dispatch = useDispatch();
-
-  console.log(users);
 
   const handleChange1 = (e) => {
     dispatch(setCompanyTitle(e.target.value));
@@ -53,6 +53,10 @@ const BoxContent = () => {
     } else {
       dispatch(setTeamAdmin([]));
     }
+  };
+
+  const onFileChange = (e) => {
+    setSelectedFiles(e.target.files[0]);
   };
 
   return (
@@ -79,13 +83,7 @@ const BoxContent = () => {
 
       <CreateBox boxTitle={"Apprenticeship Description"}>
         <div className="boxContent__form">
-          <input
-            id="boxInput"
-            type="text"
-            placeholder="Enter Description"
-            value={companyTitleValue}
-            onChange={handleChange1}
-          />
+          <input id="boxInput" type="text" placeholder="Enter Description" />
         </div>
       </CreateBox>
 
@@ -93,13 +91,27 @@ const BoxContent = () => {
         boxTitle={"Introduce yourself, your company, and what you're building."}
       >
         <div className="boxContent__form">
-          <div className="boxContent__input">
+          <div
+            className="boxContent__input"
+            onClick={() => this.fileInput.click()}
+          >
             <label className="boxContent__label">
               Drag n drop to upload your video
             </label>
             <UploadIcon />
           </div>
-          <input type="file" placeholder="Enter Description" />
+          <input
+            type="file"
+            placeholder="Enter Description"
+            onChange={onFileChange && handleChange1}
+            value={companyTitleValue}
+          />
+          {selectedFiles && (
+            <div className="boxContent__fileContainer">
+              <p className="boxContent__fileName">{selectedFiles.name}</p>
+              <CloseIcon id={"deleteFile"} />
+            </div>
+          )}
         </div>
       </CreateBox>
 
