@@ -45,6 +45,7 @@ const BoxContent = () => {
   const handleChange1 = (e) => {
     dispatch(setCompanyTitle(e.target.value));
     dispatch(changeTitleIcon(e.target.value.trim().length > 5));
+    setSelectedFiles(e.target.files[0]);
   };
 
   const handleAdminUsers = () => {
@@ -53,10 +54,6 @@ const BoxContent = () => {
     } else {
       dispatch(setTeamAdmin([]));
     }
-  };
-
-  const onFileChange = (e) => {
-    setSelectedFiles(e.target.files[0]);
   };
 
   return (
@@ -103,8 +100,8 @@ const BoxContent = () => {
           <input
             type="file"
             placeholder="Enter Description"
-            onChange={onFileChange && handleChange1}
             value={companyTitleValue}
+            onChange={handleChange1}
           />
           {selectedFiles && (
             <div className="boxContent__fileContainer">
