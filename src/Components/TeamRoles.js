@@ -11,7 +11,11 @@ import {
 } from "./IconSvg";
 import countriesList from "../data/countries";
 import { useDispatch, useSelector } from "react-redux";
-import { setDescription, setRole } from "../features/RolesSlice";
+import {
+  setDescription,
+  setRequiredSkill,
+  setRole,
+} from "../features/RolesSlice";
 
 const TeamRoles = ({ title }) => {
   const [open, setOpen] = useState(false);
@@ -22,6 +26,8 @@ const TeamRoles = ({ title }) => {
   const [suggestions, setSuggestions] = useState([]);
   const roleName = useSelector((state) => state.role.role);
   const roleDescription = useSelector((state) => state.role.description);
+  const roleRequiredSkills = useSelector((state) => state.role.requiredSkills);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -115,7 +121,11 @@ const TeamRoles = ({ title }) => {
             <span>
               <ApprenIcon id={"Appren"} />
             </span>
-            <div className="dropdown-btn">{selectedSkill}</div>
+            <input
+              className="dropdown-btn"
+              onChange={(e) => dispatch(setRequiredSkill(e.target.value))}
+              value={roleRequiredSkills}
+            />
           </div>
           <DropDownArrow id={"dropdownArr"} />
         </div>

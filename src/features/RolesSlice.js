@@ -5,6 +5,7 @@ const initialState = {
   role: "",
   description: "",
   requiredSkill: [],
+  requiredSkills: "",
   complimentarySkill: [],
   location: "",
 };
@@ -22,8 +23,11 @@ const rolesSlice = createSlice({
     setDescription: (state, action) => {
       state.description = action.payload;
     },
-    setRequiredSkill: (state, action) => {
+    addRequiredSkill: (state, action) => {
       state.requiredSkill.push(action.payload);
+    },
+    setRequiredSkill: (state, action) => {
+      state.requiredSkills = action.payload;
     },
     setComplimentarySkill: (state, action) => {
       state.complimentarySkill.push(action.payload);
@@ -38,6 +42,7 @@ export const {
   addRole,
   setRole,
   setDescription,
+  addRequiredSkill,
   setRequiredSkill,
   setComplimentarySkill,
   setLocation,

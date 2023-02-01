@@ -389,6 +389,15 @@ input[type="radio"]:checked::after {
 
 /* skills container */
 
+.role__skill-cont {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+
+}
+
 .role__text-cont {
     box-sizing: border-box;
     padding: .3rem;

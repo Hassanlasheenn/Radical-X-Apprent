@@ -37,7 +37,7 @@ import {
 } from "../features/TickSlice";
 import { addUser } from "../features/AdminSlice";
 import { duplicate, erase } from "../features/ApprenBoxSlice";
-import { addRole } from "../features/RolesSlice";
+import { addRole, addRequiredSkill } from "../features/RolesSlice";
 
 const BoxContent = ({ id }) => {
   const [showRoles, setShowRoles] = useState(false);
@@ -47,11 +47,16 @@ const BoxContent = ({ id }) => {
   const companyTitleValue = useSelector(selectCompanyTitle);
   const adminUsers = useSelector(selectTeamAdmin);
   const roleUsers = useSelector(selectRole);
-  const users = useSelector((state) => state.admin.admins);
+
+  const usersAdmin = useSelector((state) => state.admin.admins);
   const userRoles = useSelector((state) => state.role.roles);
+  const userRequiredSkills = useSelector((state) => state.role.requiredSkill);
+
   const userName = useSelector((state) => state.admin.name);
   const roleName = useSelector((state) => state.role.role);
   const roleDescription = useSelector((state) => state.role.description);
+  const roleRequiredSkills = useSelector((state) => state.role.requiredSkills);
+
   const dispatch = useDispatch();
 
   const handleChange1 = (e) => {
@@ -61,7 +66,7 @@ const BoxContent = ({ id }) => {
   };
 
   const handleAdminUsers = () => {
-    if (users.length > 0) {
+    if (usersAdmin.length > 0) {
       dispatch(setTeamAdmin(adminUsers));
     } else {
       dispatch(setTeamAdmin([]));
@@ -100,7 +105,7 @@ const BoxContent = ({ id }) => {
 
       <CreateBox boxTitle={"Apprenticeship Description"}>
         <div className="boxContent__form">
-          <input id="boxInput" type="text" placeholder="Enter Description" />
+          <textarea id="boxInput" type="text" placeholder="Enter Description" />
         </div>
       </CreateBox>
 
@@ -178,9 +183,14 @@ const BoxContent = ({ id }) => {
               </div>
 
               <p className="role__para">{userRole.roleDescription}</p>
-
-              <div className="role__text-cont">
-                <p className="role__text">Skills area</p>
+              <div className="role__skill-cont">
+                {userRequiredSkills.map((skill) => (
+                  <div className="role__text-cont">
+                    <p key={skill.roleRequiredSkills} className="role__text">
+                      {skill.roleRequiredSkills}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -196,7 +206,7 @@ const BoxContent = ({ id }) => {
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
         <div className="user__container" onChange={handleAdminUsers}>
-          {users.map((user) => (
+          {usersAdmin.map((user) => (
             <div className="user__linkedin">
               <div className="user__profile">
                 <div className="user__profile-rectangle" />
@@ -221,6 +231,7 @@ const BoxContent = ({ id }) => {
           title={"Add Role"}
           onSave={() => {
             dispatch(addRole({ roleName, roleDescription }));
+            dispatch(addRequiredSkill({ roleRequiredSkills }));
             dispatch(changeRoleIcon(true));
           }}
           onCloseModal={() => setShowRoles(false)}
