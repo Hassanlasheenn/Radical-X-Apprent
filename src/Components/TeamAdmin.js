@@ -7,6 +7,7 @@ import { addUser, setAdminName } from "../features/AdminSlice";
 const TeamAdmin = ({ title }) => {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.admin.name);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addUser({ userName }));
@@ -31,6 +32,7 @@ const TeamAdmin = ({ title }) => {
           placeholder="Name"
           value={userName}
           onChange={(e) => dispatch(setAdminName(e.target.value))}
+          required
         />
       </form>
       <div className="hours__input">

@@ -78,6 +78,7 @@ const TeamRoles = ({ title }) => {
               onChange={(e) => dispatch(setRole(e.target.value))}
               className="dropdown-btn"
               value={roleName}
+              required
             />
           </div>
           <DropDownArrow id={"dropdownArr"} />
@@ -107,6 +108,7 @@ const TeamRoles = ({ title }) => {
           type="text"
           placeholder="Description"
           onChange={(e) => dispatch(setDescription(e.target.value))}
+          required
         />
       </div>
 

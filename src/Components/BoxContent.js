@@ -184,13 +184,18 @@ const BoxContent = ({ id }) => {
 
               <p className="role__para">{userRole.roleDescription}</p>
               <div className="role__skill-cont">
-                {userRequiredSkills.map((skill) => (
-                  <div className="role__text-cont">
-                    <p key={skill.roleRequiredSkills} className="role__text">
-                      {skill.roleRequiredSkills}
-                    </p>
-                  </div>
-                ))}
+                {userRequiredSkills.length > 0
+                  ? userRequiredSkills.map((skill) => (
+                      <div className="role__text-cont">
+                        <p
+                          key={skill.roleRequiredSkills}
+                          className="role__text"
+                        >
+                          {skill.roleRequiredSkills}
+                        </p>
+                      </div>
+                    ))
+                  : null}
               </div>
             </div>
           ))}
