@@ -45,7 +45,7 @@
 #delete {
     width: 1rem;
     stroke: #1E1E1E;
-    stroke-width: 1.5;
+    stroke-width: 1;
 }
 
 .box__icons > #write:hover, #duplicate:hover, #delete:hover {
