@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import "../styles/TeamRoles.css";
 import {
@@ -10,14 +10,23 @@ import {
   StarIcon,
 } from "./IconSvg";
 import countriesList from "../data/countries";
+import { useDispatch, useSelector } from "react-redux";
+import { setDescription, setRole } from "../features/RolesSlice";
 
-const TeamRoles = () => {
+const TeamRoles = ({ title }) => {
   const [open, setOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState(["Select Roles"]);
   const [selectedSkill, setSelectedSkill] = useState(["Select Skills"]);
   const [selectedComp, setSelectedComp] = useState(["Select Skills"]);
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const roleName = useSelector((state) => state.role.role);
+  const roleDescription = useSelector((state) => state.role.description);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
   const roles = [
     "iOS Developer",
@@ -59,7 +68,11 @@ const TeamRoles = () => {
             <span>
               <ProfileIcon id={"profile"} />
             </span>
-            <div className="dropdown-btn">{selectedRole}</div>
+            <input
+              onChange={(e) => dispatch(setRole(e.target.value))}
+              className="dropdown-btn"
+              value={roleName}
+            />
           </div>
           <DropDownArrow id={"dropdownArr"} />
         </div>
@@ -82,7 +95,13 @@ const TeamRoles = () => {
 
       <div className="role__desc">
         <p className="role__desc-title">Role Description</p>
-        <textarea id="descriptionModal" type="text" placeholder="Description" />
+        <textarea
+          value={roleDescription}
+          id="descriptionModal"
+          type="text"
+          placeholder="Description"
+          onChange={(e) => dispatch(setDescription(e.target.value))}
+        />
       </div>
 
       <Dropdown

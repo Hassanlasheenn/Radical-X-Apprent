@@ -8,6 +8,7 @@ const CreatePage = ({ title }) => {
   useEffect(() => {
     document.title = title;
   });
+
   return (
     <div className="create">
       <Navbar />

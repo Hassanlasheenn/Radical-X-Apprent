@@ -3,6 +3,9 @@ import "../styles/BoxContent.css";
 import CreateBox from "./CreateBox";
 import {
   AddCircle,
+  BoxIcon1,
+  BoxIcon2,
+  BoxIcon3,
   CloseIcon,
   CustomIcon,
   DataIcon,
@@ -23,23 +26,32 @@ import TeamRoles from "./TeamRoles";
 import TeamAdmin from "./TeamAdmin";
 import {
   changeAdminIcon,
+  changeRoleIcon,
   changeTitleIcon,
   selectCompanyTitle,
+  selectRole,
   selectTeamAdmin,
   setCompanyTitle,
   setTeamAdmin,
+  setTeamRole,
 } from "../features/TickSlice";
 import { addUser } from "../features/AdminSlice";
+import { duplicate, erase } from "../features/ApprenBoxSlice";
+import { addRole } from "../features/RolesSlice";
 
-const BoxContent = () => {
+const BoxContent = ({ id }) => {
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState(null);
 
   const companyTitleValue = useSelector(selectCompanyTitle);
   const adminUsers = useSelector(selectTeamAdmin);
+  const roleUsers = useSelector(selectRole);
   const users = useSelector((state) => state.admin.admins);
+  const userRoles = useSelector((state) => state.role.roles);
   const userName = useSelector((state) => state.admin.name);
+  const roleName = useSelector((state) => state.role.role);
+  const roleDescription = useSelector((state) => state.role.description);
   const dispatch = useDispatch();
 
   const handleChange1 = (e) => {
@@ -53,6 +65,14 @@ const BoxContent = () => {
       dispatch(setTeamAdmin(adminUsers));
     } else {
       dispatch(setTeamAdmin([]));
+    }
+  };
+
+  const handleRoleUsers = () => {
+    if (userRoles.length > 0) {
+      dispatch(setTeamRole(roleUsers));
+    } else {
+      dispatch(setTeamRole([]));
     }
   };
 
@@ -132,6 +152,39 @@ const BoxContent = () => {
           <AddCircle id={"circle"} />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
+
+        <div className="role__container" onChange={handleRoleUsers}>
+          {userRoles.map((userRole) => (
+            <div className="role">
+              <div className="role__title-bar">
+                <p key={userRole.roleName} className="role__title">
+                  {userRole.roleName}
+                </p>
+                <div className="role__icons">
+                  <BoxIcon1 id={"write"} />
+                  <BoxIcon2
+                    id={"duplicate"}
+                    onClick={() => {
+                      dispatch(duplicate({ id }));
+                    }}
+                  />
+                  <BoxIcon3
+                    id={"delete"}
+                    onClick={() => {
+                      dispatch(erase(id));
+                    }}
+                  />
+                </div>
+              </div>
+
+              <p className="role__para">{userRole.roleDescription}</p>
+
+              <div className="role__text-cont">
+                <p className="role__text">Skills area</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </CreateBox>
 
       <CreateBox boxTitle={"Team Admin"}>
@@ -166,11 +219,15 @@ const BoxContent = () => {
       {showRoles ? (
         <Modal
           title={"Add Role"}
+          onSave={() => {
+            dispatch(addRole({ roleName, roleDescription }));
+            dispatch(changeRoleIcon(true));
+          }}
           onCloseModal={() => setShowRoles(false)}
           show={showRoles}
           btnName={"Save"}
         >
-          <TeamRoles />
+          <TeamRoles title={"RadicalX | Add Roles"} />
         </Modal>
       ) : (
         <Modal
@@ -183,7 +240,7 @@ const BoxContent = () => {
           show={showAdmin}
           btnName={"Save"}
         >
-          <TeamAdmin />
+          <TeamAdmin title={"RadicalX | Add Admins"} />
         </Modal>
       )}
     </div>

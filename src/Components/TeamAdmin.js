@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ProfileIcon, ImageIcon, EmailIcon, LinkIcon } from "./IconSvg";
 import "../styles/TeamAdmin.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, setAdminName } from "../features/AdminSlice";
 
-const TeamAdmin = () => {
+const TeamAdmin = ({ title }) => {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.admin.name);
   const handleSubmit = (e) => {
@@ -12,6 +12,9 @@ const TeamAdmin = () => {
     dispatch(addUser({ userName }));
   };
 
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   return (
     <div className="admin">
       <div className="boxContent__rectangle-cont">
