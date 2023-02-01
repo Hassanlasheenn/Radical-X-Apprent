@@ -338,40 +338,85 @@ input[type="radio"]:checked::after {
 .role__container {
     width: 100%;
     transform: translateY(-3em);
-    display: flex;
-    justify-content: flex-start;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
     align-items: center;
-    gap: 1em;
+    flex-wrap: wrap;
     margin-top: 1em;
+    gap: 2em;
 }
 
 .role {
-    padding: 1em;
+    padding: 1.5em;
     border: var(--basic-border-color);
     border-radius: 1.5em;
+    max-height: 25em;
+    max-width: 25em;
+    flex: 0 0 100%;
 }
 
 .role__title-bar {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 2em;
+    gap: 3.5em;
     margin-bottom: 1em;
+    flex: 0 0 100%;
 }
 
 .role__title {
     font-family: 'Space Grotesk';
     font-weight: 500;
     font-size: .8rem;
+    white-space: nowrap;
 }
 
 .role__icons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
 }
 
+.role__para {
+    max-width: 100%;
+    font-weight: 400;
+    font-family: 'Space Grotesk';
+    letter-spacing: 0.3px;
+    color: var(--bg-color);
+}
+
+/* skills container */
+
+.role__text-cont {
+    box-sizing: border-box;
+    padding: .3rem;
+    background: #E7F0FF;
+    border-radius: 8px;
+    border: 1px solid #2153FF;
+    white-space: nowrap;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.role__text-cont:hover {
+    background: var(--container-bg);
+    border: var(--solid-border-color);
+    cursor: pointer;
+}
+
+.role__text {
+    color: #2153FF;
+    letter-spacing: 0.3px;
+}
+
+.role__text:hover {
+    color: var(--buttons-bg);
+    letter-spacing: 0.3px;
+}
 /* team admin container */
 
 
