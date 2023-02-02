@@ -16,9 +16,21 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/signup" element={<Signup />} />
-            <Route exact path="/reset" element={<ForgotPass />} />
+            <Route
+              exact
+              path="/login"
+              element={<Login title={"RadicalX | Log In"} />}
+            />
+            <Route
+              exact
+              path="/signup"
+              element={<Signup title={"RadicalX | Sign Up"} />}
+            />
+            <Route
+              exact
+              path="/reset"
+              element={<ForgotPass title={"RadicalX | Password Reset"} />}
+            />
             <Route element={<PrivateRoute />}>
               <Route
                 exact

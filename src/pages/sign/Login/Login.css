@@ -142,6 +142,7 @@ input[type="password"]:focus {
 #signin {
     color: var(--buttons-bg);
     text-decoration: none;
+    padding-left: .2em;
 }
 /* signup button */
 
@@ -203,10 +204,6 @@ input[type="checkbox"] {
 /* eye / slash eye */
 
 .right__pass-container, .right__email-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     outline: none;
     width: 360px;
     height: 100%;
@@ -239,7 +236,7 @@ input[type="checkbox"] {
     opacity: .6;
 }
 
-/* #lock2 {
+#lock2 {
     position: absolute;
     top: 76px;
     left: 16px;
@@ -247,7 +244,7 @@ input[type="checkbox"] {
     outline: none;
     border: none;
     opacity: .6;
-} */
+}
 
 /* new user */
 

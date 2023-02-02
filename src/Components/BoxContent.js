@@ -40,6 +40,7 @@ import { duplicate, erase } from "../features/ApprenBoxSlice";
 import { addRole, addRequiredSkill } from "../features/RolesSlice";
 
 const BoxContent = ({ id }) => {
+  const [show, setShow] = useState(false);
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState(null);
@@ -58,6 +59,10 @@ const BoxContent = ({ id }) => {
   const roleRequiredSkills = useSelector((state) => state.role.requiredSkills);
 
   const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   const handleChange1 = (e) => {
     dispatch(setCompanyTitle(e.target.value));
@@ -166,7 +171,7 @@ const BoxContent = ({ id }) => {
                   {userRole.roleName}
                 </p>
                 <div className="role__icons">
-                  <BoxIcon1 id={"write"} />
+                  <BoxIcon1 id={"write"} onClick={() => setShow(true)} />
                   <BoxIcon2
                     id={"duplicate"}
                     onClick={() => {
@@ -244,6 +249,33 @@ const BoxContent = ({ id }) => {
           btnName={"Save"}
         >
           <TeamRoles title={"RadicalX | Add Roles"} />
+        </Modal>
+      ) : show ? (
+        <Modal
+          title={"Edit Card"}
+          btnName={"Save"}
+          onCloseModal={() => setShow(false)}
+          onSave={() => setShow(false)}
+          show={show}
+        >
+          <form onSubmit={handleSubmit} className="modal-body__container">
+            <p className="modal-body__title">Enter Box Title</p>
+            <input
+              className="modal-body__input"
+              type="text"
+              placeholder="Type here"
+              onChange={(e) => dispatch(addRole({ roleName }))}
+              required
+            />
+            <p className="modal-body__title">Enter Position Title</p>
+            <input
+              className="modal-body__input"
+              type="text"
+              placeholder="Type here"
+              onChange={(e) => dispatch(addRole({ roleDescription }))}
+              required
+            />
+          </form>
         </Modal>
       ) : (
         <Modal

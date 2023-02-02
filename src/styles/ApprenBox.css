@@ -46,6 +46,7 @@
     width: 1rem;
     stroke: #1E1E1E;
     stroke-width: 1;
+    cursor: pointer;
 }
 
 .box__icons > #write:hover, #duplicate:hover, #delete:hover {
