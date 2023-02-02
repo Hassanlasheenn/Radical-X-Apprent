@@ -37,7 +37,11 @@ import {
 } from "../features/TickSlice";
 import { addUser } from "../features/AdminSlice";
 import { duplicate, erase } from "../features/ApprenBoxSlice";
-import { addRole, addRequiredSkill } from "../features/RolesSlice";
+import {
+  addRole,
+  addRequiredSkill,
+  addComplimentarySkill,
+} from "../features/RolesSlice";
 
 const BoxContent = ({ id }) => {
   const [show, setShow] = useState(false);
@@ -52,11 +56,17 @@ const BoxContent = ({ id }) => {
   const usersAdmin = useSelector((state) => state.admin.admins);
   const userRoles = useSelector((state) => state.role.roles);
   const userRequiredSkills = useSelector((state) => state.role.requiredSkill);
+  const userComplimentarySkills = useSelector(
+    (state) => state.role.complimentarySkill
+  );
 
   const userName = useSelector((state) => state.admin.name);
   const roleName = useSelector((state) => state.role.role);
   const roleDescription = useSelector((state) => state.role.description);
   const roleRequiredSkills = useSelector((state) => state.role.requiredSkills);
+  const roleComplimentarySkills = useSelector(
+    (state) => state.role.complimentarySkills
+  );
 
   const dispatch = useDispatch();
 
@@ -165,7 +175,7 @@ const BoxContent = ({ id }) => {
         </button>
 
         <div className="role__container" onChange={handleRoleUsers}>
-          {userRoles.map((userRole) => (
+          {userRoles?.map((userRole) => (
             <div className="role">
               <div className="role__title-bar">
                 <p key={userRole.roleName} className="role__title">
@@ -198,6 +208,19 @@ const BoxContent = ({ id }) => {
                           className="role__text"
                         >
                           {skill.roleRequiredSkills}
+                        </p>
+                      </div>
+                    ))
+                  : null}
+
+                {userComplimentarySkills.length > 0
+                  ? userComplimentarySkills.map((skillComp) => (
+                      <div className="role__text-cont">
+                        <p
+                          key={skillComp.roleComplimentarySkills}
+                          className="role__text"
+                        >
+                          {skillComp.roleComplimentarySkills}
                         </p>
                       </div>
                     ))
@@ -242,6 +265,7 @@ const BoxContent = ({ id }) => {
           onSave={() => {
             dispatch(addRole({ roleName, roleDescription }));
             dispatch(addRequiredSkill({ roleRequiredSkills }));
+            dispatch(addComplimentarySkill({ roleComplimentarySkills }));
             dispatch(changeRoleIcon(true));
             setShowRoles(false);
           }}

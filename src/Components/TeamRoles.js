@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Dropdown from "./Dropdown";
 import "../styles/TeamRoles.css";
 import {
@@ -9,7 +9,6 @@ import {
   ProfileIcon,
   StarIcon,
 } from "./IconSvg";
-import countriesList from "../data/countries";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setComplimentarySkill,
@@ -19,12 +18,12 @@ import {
 } from "../features/RolesSlice";
 
 const TeamRoles = ({ title }) => {
-  const [selectedComp, setSelectedComp] = useState(["Select Skills"]);
-  const [search, setSearch] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
   const roleName = useSelector((state) => state.role.role);
   const roleDescription = useSelector((state) => state.role.description);
   const roleRequiredSkills = useSelector((state) => state.role.requiredSkills);
+  const roleComplimentarySkills = useSelector(
+    (state) => state.role.complimentarySkills
+  );
 
   const dispatch = useDispatch();
 
@@ -42,20 +41,6 @@ const TeamRoles = ({ title }) => {
 
   const skills = ["Swift", "iOS", "Objective-C", "ARM"];
 
-  // const handleInputChange = (e) => {
-  //   const searchTerm = e.target.value;
-  //   setSearch(searchTerm);
-
-  //   const newSuggestions = countriesList.filter((country) =>
-  //     country.toLowerCase().startsWith(search.toLowerCase())
-  //   );
-  //   setSuggestions(newSuggestions);
-  // };
-
-  const handleSelect = (suggestion) => {
-    console.log(suggestion);
-  };
-
   return (
     <div className="modalRoles">
       <Dropdown className={"dropdown"}>
@@ -64,20 +49,28 @@ const TeamRoles = ({ title }) => {
             <span>
               <ProfileIcon id={"profile"} />
             </span>
-            <select
-              onChange={(e) => dispatch(setRole(e.target.value))}
-              className="dropdown-btn"
-              value={roleName}
-              required
-            >
-              {roles.map((role) => (
-                <option key={role} value={role} className="dropdown-item">
-                  {role}
+
+            <div className="dropdown__custom-select">
+              <select
+                onChange={(e) => dispatch(setRole(e.target.value))}
+                className="dropdown-btn"
+                value={roleName}
+                required
+                placeholder="Select Roles"
+              >
+                <option disabled value="">
+                  Select Roles
                 </option>
-              ))}
-            </select>
+                {roles.map((role) => (
+                  <>
+                    <option key={role} value={role} className="dropdown-item">
+                      {role}
+                    </option>
+                  </>
+                ))}
+              </select>
+            </div>
           </div>
-          <DropDownArrow id={"dropdownArr"} />
         </div>
       </Dropdown>
 
@@ -100,20 +93,26 @@ const TeamRoles = ({ title }) => {
             <span>
               <ApprenIcon id={"Appren"} />
             </span>
-            <select
-              onChange={(e) => dispatch(setRequiredSkill(e.target.value))}
-              className="dropdown-btn"
-              value={roleRequiredSkills}
-              required
-            >
-              {skills.map((skill) => (
-                <option key={skill} value={skill} className="dropdown-item">
-                  {skill}
+            <div className="dropdown__custom-select">
+              <select
+                onChange={(e) => dispatch(setRequiredSkill(e.target.value))}
+                className="dropdown-btn"
+                value={roleRequiredSkills}
+                required
+              >
+                <option disabled value="">
+                  Select Skills
                 </option>
-              ))}
-            </select>
+                {skills.map((skill) => (
+                  <>
+                    <option key={skill} value={skill} className="dropdown-item">
+                      {skill}
+                    </option>
+                  </>
+                ))}
+              </select>
+            </div>
           </div>
-          <DropDownArrow id={"dropdownArr"} />
         </div>
       </Dropdown>
 
@@ -124,24 +123,32 @@ const TeamRoles = ({ title }) => {
             <span>
               <StarIcon id={"Appren"} />
             </span>
-            <select
-              onChange={(e) => dispatch(setComplimentarySkill(e.target.value))}
-              className="dropdown-btn"
-              value={roleName}
-              required
-            >
-              {skills.map((skillComp) => (
-                <option
-                  key={skillComp}
-                  value={skillComp}
-                  className="dropdown-item"
-                >
-                  {skillComp}
+            <div className="dropdown__custom-select">
+              <select
+                onChange={(e) =>
+                  dispatch(setComplimentarySkill(e.target.value))
+                }
+                className="dropdown-btn"
+                value={roleComplimentarySkills}
+                required
+              >
+                <option disabled value="">
+                  Select Skills
                 </option>
-              ))}
-            </select>
+                {skills.map((skillComp) => (
+                  <>
+                    <option
+                      key={skillComp}
+                      value={skillComp}
+                      className="dropdown-item"
+                    >
+                      {skillComp}
+                    </option>
+                  </>
+                ))}
+              </select>
+            </div>
           </div>
-          <DropDownArrow id={"dropdownArr"} />
         </div>
       </Dropdown>
 
@@ -162,12 +169,7 @@ const TeamRoles = ({ title }) => {
             <LocationIcon id={"location"} />
           </span>
           <div className="dropdown__location-btn">
-            <input
-              value={suggestions}
-              id="hoursInput"
-              type="text"
-              placeholder="Select location"
-            />
+            <input id="hoursInput" type="text" placeholder="Select location" />
             <DropDownArrow id={"locationDropdown"} />
           </div>
         </div>

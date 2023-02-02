@@ -40,7 +40,9 @@ function App() {
               <Route
                 exact
                 path="/create"
-                element={<CreatePage title={"RadicalX | Apprenticeship"} />}
+                element={
+                  <CreatePage title={"RadicalX | Create Apprenticeship"} />
+                }
               />
             </Route>
           </Routes>
