@@ -101,19 +101,16 @@ const BoxContent = ({ id }) => {
           />
         </div>
       </CreateBox>
-
       <CreateBox boxTitle={"Company Description"}>
         <div className="boxContent__form">
           <textarea id="boxInput" type="text" placeholder="Enter Description" />
         </div>
       </CreateBox>
-
       <CreateBox boxTitle={"Apprenticeship Description"}>
         <div className="boxContent__form">
           <textarea id="boxInput" type="text" placeholder="Enter Description" />
         </div>
       </CreateBox>
-
       <CreateBox
         boxTitle={"Introduce yourself, your company, and what you're building."}
       >
@@ -136,12 +133,17 @@ const BoxContent = ({ id }) => {
           {selectedFiles && (
             <div className="boxContent__fileContainer">
               <p className="boxContent__fileName">{selectedFiles.name}</p>
-              <CloseIcon id={"deleteFile"} />
+              <CloseIcon
+                onClick={() => {
+                  setSelectedFiles(null);
+                  dispatch(changeTitleIcon(false));
+                }}
+                id={"deleteFile"}
+              />
             </div>
           )}
         </div>
       </CreateBox>
-
       <CreateBox boxTitle={"Team Type"}>
         <div className="boxContent__teamType">
           <TeamBox teamName={"Web Platform"} image={<MonitorIcon />} />
@@ -153,7 +155,6 @@ const BoxContent = ({ id }) => {
           <TeamBox teamName={"Custom Team"} image={<CustomIcon />} />
         </div>
       </CreateBox>
-
       <CreateBox boxTitle={"Team Roles"}>
         <button
           onClick={() => setShowRoles(true)}
@@ -206,7 +207,6 @@ const BoxContent = ({ id }) => {
           ))}
         </div>
       </CreateBox>
-
       <CreateBox boxTitle={"Team Admin"}>
         <button
           onClick={() => setShowAdmin(true)}
@@ -229,13 +229,13 @@ const BoxContent = ({ id }) => {
           ))}
         </div>
       </CreateBox>
-
       <CreateBox boxTitle={"Timeline"}>
         <div className="boxContent__timeline">
           <DateInput />
         </div>
       </CreateBox>
 
+      {/* Modals conditions to switch between them */}
       {showRoles ? (
         <Modal
           title={"Add Role"}
@@ -243,6 +243,7 @@ const BoxContent = ({ id }) => {
             dispatch(addRole({ roleName, roleDescription }));
             dispatch(addRequiredSkill({ roleRequiredSkills }));
             dispatch(changeRoleIcon(true));
+            setShowRoles(false);
           }}
           onCloseModal={() => setShowRoles(false)}
           show={showRoles}
@@ -283,6 +284,7 @@ const BoxContent = ({ id }) => {
           onSave={() => {
             dispatch(addUser({ userName }));
             dispatch(changeAdminIcon(true));
+            setShowAdmin(false);
           }}
           onCloseModal={() => setShowAdmin(false)}
           show={showAdmin}

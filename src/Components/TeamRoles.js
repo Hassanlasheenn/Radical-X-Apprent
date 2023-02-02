@@ -12,15 +12,13 @@ import {
 import countriesList from "../data/countries";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setComplimentarySkill,
   setDescription,
   setRequiredSkill,
   setRole,
 } from "../features/RolesSlice";
 
 const TeamRoles = ({ title }) => {
-  const [open, setOpen] = useState(false);
-  const [selectedRole, setSelectedRole] = useState(["Select Roles"]);
-  const [selectedSkill, setSelectedSkill] = useState(["Select Skills"]);
   const [selectedComp, setSelectedComp] = useState(["Select Skills"]);
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -41,22 +39,18 @@ const TeamRoles = ({ title }) => {
     "Back-end Developer",
     "Front-end Developer",
   ];
+
   const skills = ["Swift", "iOS", "Objective-C", "ARM"];
 
-  // to open different dropdowns using one function through id
-  const handleClick = (id) => {
-    setOpen(open === id ? false : id);
-  };
+  // const handleInputChange = (e) => {
+  //   const searchTerm = e.target.value;
+  //   setSearch(searchTerm);
 
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
-    setSearch(searchTerm);
-
-    const newSuggestions = countriesList.filter((country) =>
-      country.toLowerCase().startsWith(search.toLowerCase())
-    );
-    setSuggestions(newSuggestions);
-  };
+  //   const newSuggestions = countriesList.filter((country) =>
+  //     country.toLowerCase().startsWith(search.toLowerCase())
+  //   );
+  //   setSuggestions(newSuggestions);
+  // };
 
   const handleSelect = (suggestion) => {
     console.log(suggestion);
@@ -64,40 +58,27 @@ const TeamRoles = ({ title }) => {
 
   return (
     <div className="modalRoles">
-      <Dropdown
-        selectedRole={selectedRole}
-        setSelectedRole={setSelectedRole}
-        className={"dropdown"}
-      >
-        <div onClick={() => handleClick(1)} className="dropdown__role-btn">
+      <Dropdown className={"dropdown"}>
+        <div className="dropdown__role-btn">
           <div className="dropdown__profile-cont">
             <span>
               <ProfileIcon id={"profile"} />
             </span>
-            <input
+            <select
               onChange={(e) => dispatch(setRole(e.target.value))}
               className="dropdown-btn"
               value={roleName}
               required
-            />
+            >
+              {roles.map((role) => (
+                <option key={role} value={role} className="dropdown-item">
+                  {role}
+                </option>
+              ))}
+            </select>
           </div>
           <DropDownArrow id={"dropdownArr"} />
         </div>
-        {open === 1 && (
-          <div className="dropdown-content">
-            {roles.map((role) => (
-              <div
-                onClick={() => {
-                  setSelectedRole(role);
-                  setOpen(false);
-                }}
-                className="dropdown-item"
-              >
-                {role}
-              </div>
-            ))}
-          </div>
-        )}
       </Dropdown>
 
       <div className="role__desc">
@@ -112,75 +93,56 @@ const TeamRoles = ({ title }) => {
         />
       </div>
 
-      <Dropdown
-        selectedSkill={selectedSkill}
-        setSelectedSkill={setSelectedSkill}
-        className={"dropdown"}
-      >
+      <Dropdown className={"dropdown"}>
         <p className="role__desc-title">Required Skills (Select any 3)</p>
-        <div onClick={() => handleClick(2)} className="dropdown__role-btn">
+        <div className="dropdown__role-btn">
           <div className="dropdown__profile-cont">
             <span>
               <ApprenIcon id={"Appren"} />
             </span>
-            <input
-              className="dropdown-btn"
+            <select
               onChange={(e) => dispatch(setRequiredSkill(e.target.value))}
+              className="dropdown-btn"
               value={roleRequiredSkills}
-            />
+              required
+            >
+              {skills.map((skill) => (
+                <option key={skill} value={skill} className="dropdown-item">
+                  {skill}
+                </option>
+              ))}
+            </select>
           </div>
           <DropDownArrow id={"dropdownArr"} />
         </div>
-        {open === 2 && (
-          <div className="dropdown-content">
-            {skills.map((skill) => (
-              <div
-                onClick={() => {
-                  setSelectedSkill(skill);
-                  setOpen(false);
-                }}
-                className="dropdown-item"
-              >
-                {skill}
-              </div>
-            ))}
-          </div>
-        )}
       </Dropdown>
 
-      <Dropdown
-        selectedSkill={selectedComp}
-        setSelectedSkill={setSelectedComp}
-        className={"dropdown"}
-      >
+      <Dropdown className={"dropdown"}>
         <p className="role__desc-title">Complimentary Skills (Select any 3)</p>
-        <div onClick={() => handleClick(3)} className="dropdown__role-btn">
+        <div className="dropdown__role-btn">
           <div className="dropdown__profile-cont">
             <span>
               <StarIcon id={"Appren"} />
             </span>
-            <div className="dropdown-btn">{selectedComp}</div>
+            <select
+              onChange={(e) => dispatch(setComplimentarySkill(e.target.value))}
+              className="dropdown-btn"
+              value={roleName}
+              required
+            >
+              {skills.map((skillComp) => (
+                <option
+                  key={skillComp}
+                  value={skillComp}
+                  className="dropdown-item"
+                >
+                  {skillComp}
+                </option>
+              ))}
+            </select>
           </div>
           <DropDownArrow id={"dropdownArr"} />
         </div>
-        {open === 3 && (
-          <div className="dropdown-content">
-            {skills.map((skill, index) => (
-              <>
-                <div
-                  key={index}
-                  onClick={() => {
-                    setSelectedComp(skill);
-                    setOpen(false);
-                  }}
-                  className="dropdown-item"
-                >
-                  {skill}
-                </div>
-              </>
-            ))}
-          </div>
-        )}
       </Dropdown>
 
       <div className="hours">
@@ -199,13 +161,9 @@ const TeamRoles = ({ title }) => {
           <span>
             <LocationIcon id={"location"} />
           </span>
-          <div
-            onClick={() => handleClick(4)}
-            className="dropdown__location-btn"
-          >
+          <div className="dropdown__location-btn">
             <input
-              onChange={handleInputChange}
-              value={search}
+              value={suggestions}
               id="hoursInput"
               type="text"
               placeholder="Select location"
@@ -213,22 +171,6 @@ const TeamRoles = ({ title }) => {
             <DropDownArrow id={"locationDropdown"} />
           </div>
         </div>
-        {open === 4 && (
-          <div className="countries__list">
-            {suggestions.map((suggestion, index) => (
-              <li
-                className="countries"
-                key={index}
-                onClick={() => {
-                  handleSelect(suggestion);
-                  setSearch(suggestion);
-                }}
-              >
-                <p>{suggestion}</p>
-              </li>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

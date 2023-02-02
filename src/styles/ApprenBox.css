@@ -59,6 +59,15 @@
     transition: all .3s;
 }
 
+#write:hover {
+    width: .9rem;
+    height: .9rem;
+    cursor: pointer;
+    stroke-width: 2;
+    stroke: var(--buttons-bg);
+    fill: none;
+    transition: all .3s;
+}
 
 /* box paragraph */
 

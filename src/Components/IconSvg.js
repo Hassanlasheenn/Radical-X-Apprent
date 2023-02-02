@@ -1013,10 +1013,11 @@ export const LinkIcon = ({ id }) => {
   );
 };
 
-export const CloseIcon = ({ id }) => {
+export const CloseIcon = ({ id, onClick }) => {
   return (
     <svg
       id={id}
+      onClick={onClick}
       width="24"
       height="24"
       viewBox="0 0 24 24"

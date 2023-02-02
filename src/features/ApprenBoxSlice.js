@@ -10,6 +10,7 @@ const initialState = {
   ],
   title: "",
   position: "",
+  apprentDescription: "",
   isLoading: true,
 };
 

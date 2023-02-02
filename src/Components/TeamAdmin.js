@@ -16,10 +16,15 @@ const TeamAdmin = ({ title }) => {
   useEffect(() => {
     document.title = title;
   }, [title]);
+
   return (
     <div className="admin">
       <div className="boxContent__rectangle-cont">
-        <div className="boxContent__rectangle" />
+        <input
+          type={"file"}
+          style={{ zIndex: 1000 }}
+          className="boxContent__rectangle"
+        />
         <ImageIcon id={"image"} />
       </div>
       <form onSubmit={handleSubmit} className="hours__input">

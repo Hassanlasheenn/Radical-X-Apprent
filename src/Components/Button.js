@@ -1,22 +1,18 @@
-import React from 'react';
+import React from "react";
 
 const Button = ({ onClick, children }) => {
-
-  const handleRoute = ({ className }) => {
-    if(onClick) {
-        onClick()
+  const handleRoute = () => {
+    if (onClick) {
+      onClick();
     }
-}
+  };
   return (
     <div>
-      <button 
-        onClick={handleRoute} 
-        className={'home__right-button'}
-      >
+      <button onClick={handleRoute} className={"home__right-button"}>
         {children}
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default Button;
