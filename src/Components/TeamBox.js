@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeTeamIcon, setTeamType } from "../features/TickSlice";
 
 const TeamBox = ({ teamName, image }) => {
