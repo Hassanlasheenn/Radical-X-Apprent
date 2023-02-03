@@ -20,11 +20,7 @@ const TeamAdmin = ({ title }) => {
   return (
     <div className="admin">
       <div className="boxContent__rectangle-cont">
-        <input
-          type={"file"}
-          style={{ zIndex: 1000 }}
-          className="boxContent__rectangle"
-        />
+        <div className="boxContent__rectangle" />
         <ImageIcon id={"image"} />
       </div>
       <form onSubmit={handleSubmit} className="hours__input">
