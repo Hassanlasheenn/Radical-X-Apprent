@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   addAppren,
+  addPositions,
   selectApprenDesc,
   selectPosition,
+  selectPositions,
   selectTitle,
 } from "../features/ApprenBoxSlice";
 import "../styles/Navbar.css";
@@ -17,8 +19,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [publish, setPublish] = useState(false);
   const apprenTitle = useSelector(selectTitle);
-  const apprenPosition = useSelector(selectPosition);
   const apprenDesc = useSelector(selectApprenDesc);
+  const userPosition = useSelector((state) => state.appren.position);
+
   const dispatch = useDispatch();
 
   return (
@@ -33,7 +36,7 @@ const Navbar = () => {
       <Button
         onClick={() => {
           setPublish(true);
-          dispatch(addAppren({ apprenTitle, apprenPosition, apprenDesc }));
+          dispatch(addAppren({ apprenTitle, apprenDesc, userPosition }));
         }}
       >
         Publish Apprenticeship

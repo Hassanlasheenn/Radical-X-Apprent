@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   boxItems: [],
   title: "",
+  positions: [],
   position: "",
   apprentDescription: "",
   isLoading: true,
@@ -21,7 +22,9 @@ const apprenBoxSlice = createSlice({
     setApprentDesc: (state, action) => {
       state.apprentDescription = action.payload;
     },
-
+    addPositions: (state, action) => {
+      state.positions.push(action.payload);
+    },
     addAppren: (state, action) => {
       state.boxItems.push(action.payload);
     },
@@ -49,14 +52,15 @@ export const {
   duplicate,
   erase,
   setTitle,
-  setPosition,
   setApprentDesc,
   addAppren,
+  addPositions,
+  setPosition,
 } = apprenBoxSlice.actions;
 
 export const selectTitle = (state) => state.appren.title;
-export const selectPosition = (state) => state.appren.position;
 export const selectApprenDesc = (state) => state.appren.apprentDescription;
 export const selectAppren = (state) => state.appren.boxItems;
+export const selectPositions = (state) => state.appren.positions;
 
 export default apprenBoxSlice.reducer;

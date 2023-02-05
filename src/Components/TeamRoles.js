@@ -16,6 +16,7 @@ import {
   setRequiredSkill,
   setRole,
 } from "../features/RolesSlice";
+import { setPosition } from "../features/ApprenBoxSlice";
 
 const TeamRoles = ({ title }) => {
   const roleName = useSelector((state) => state.role.role);
@@ -52,7 +53,10 @@ const TeamRoles = ({ title }) => {
 
             <div className="dropdown__custom-select">
               <select
-                onChange={(e) => dispatch(setRole(e.target.value))}
+                onChange={(e) => {
+                  dispatch(setRole(e.target.value));
+                  dispatch(setPosition(e.target.value));
+                }}
                 className="dropdown-btn"
                 value={roleName}
                 required
@@ -95,7 +99,9 @@ const TeamRoles = ({ title }) => {
             </span>
             <div className="dropdown__custom-select">
               <select
-                onChange={(e) => dispatch(setRequiredSkill(e.target.value))}
+                onChange={(e) => {
+                  dispatch(setRequiredSkill(e.target.value));
+                }}
                 className="dropdown-btn"
                 value={roleRequiredSkills}
                 required

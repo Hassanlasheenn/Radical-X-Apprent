@@ -37,6 +37,7 @@ import {
 } from "../features/TickSlice";
 import { addUser } from "../features/AdminSlice";
 import {
+  addPositions,
   duplicate,
   erase,
   selectApprenDesc,
@@ -68,6 +69,7 @@ const BoxContent = ({ id, handleFile }) => {
   const userComplimentarySkills = useSelector(
     (state) => state.role.complimentarySkill
   );
+  const userPosition = useSelector((state) => state.appren.position);
 
   const userName = useSelector((state) => state.admin.name);
   const roleName = useSelector((state) => state.role.role);
@@ -311,6 +313,7 @@ const BoxContent = ({ id, handleFile }) => {
             dispatch(addRole({ roleName, roleDescription }));
             dispatch(addRequiredSkill({ roleRequiredSkills }));
             dispatch(addComplimentarySkill({ roleComplimentarySkills }));
+            dispatch(addPositions({ userPosition }));
             dispatch(changeRoleIcon(true));
             setShowRoles(false);
           }}

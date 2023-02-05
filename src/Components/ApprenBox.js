@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/ApprenBox.css";
 // icons svg
 import { BoxIcon1, BoxIcon2, BoxIcon3 } from "./IconSvg";
@@ -7,9 +7,8 @@ import {
   duplicate,
   erase,
   selectApprenDesc,
-  selectPosition,
+  selectPositions,
   selectTitle,
-  setPosition,
   setTitle,
 } from "../features/ApprenBoxSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,8 +26,10 @@ const ApprenBox = ({ id }) => {
   // const [position, setPosition] = useState(savedPositions);
 
   const apprenTitle = useSelector(selectTitle);
-  const apprenPosition = useSelector(selectPosition);
   const apprenDesc = useSelector(selectApprenDesc);
+  const apprenPosition = useSelector(selectPositions);
+
+  const userPosition = useSelector((state) => state.appren.position);
 
   const dispatch = useDispatch();
 
@@ -69,12 +70,15 @@ const ApprenBox = ({ id }) => {
             />
           </div>
         </div>
-
         <p className="box__para"> {apprenDesc}</p>
-
-        <div className="box__text-cont">
-          <p className="box__text">{apprenPosition}</p>
-        </div>
+        {apprenPosition.length > 0 &&
+          apprenPosition.map((position) => {
+            <div className="box__text-cont">
+              <p key={position.userPosition} className="box__text">
+                {position}
+              </p>
+            </div>;
+          })}
       </div>
       <Modal
         title={"Edit Card"}
@@ -97,7 +101,7 @@ const ApprenBox = ({ id }) => {
             className="modal-body__input"
             type="text"
             placeholder="Type here"
-            onChange={(e) => dispatch(setPosition(e.target.value))}
+            // onChange={(e) => dispatch(setPosition(e.target.value))}
             required
           />
         </form>
