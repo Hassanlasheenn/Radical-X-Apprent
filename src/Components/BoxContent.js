@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "../styles/BoxContent.css";
 import CreateBox from "./CreateBox";
 import {
@@ -43,11 +43,13 @@ import {
   addComplimentarySkill,
 } from "../features/RolesSlice";
 
-const BoxContent = ({ id }) => {
+const BoxContent = ({ id, handleFile }) => {
   const [show, setShow] = useState(false);
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState(null);
+  const [file, setFile] = useState(null);
+  const inputFileRef = useRef(null);
 
   const companyTitleValue = useSelector(selectCompanyTitle);
   const adminUsers = useSelector(selectTeamAdmin);
@@ -96,13 +98,30 @@ const BoxContent = ({ id }) => {
     }
   };
 
+  const handleClick = (e) => {
+    inputFileRef.current.click();
+  };
+
+  const handleApprentImg = (e) => {
+    const fileObj = setFile(URL.createObjectURL(e.target.files[0]));
+    if (!fileObj) {
+      return null;
+    }
+  };
+
   return (
     <div className="boxContent">
       <CreateBox boxTitle={"Company Logo & Apprenticeship Title"}>
         <div className="boxContent__form">
           <div className="boxContent__rectangle-cont">
-            <div className="boxContent__rectangle" />
-            <ImageIcon id={"image"} />
+            <img src={file} className="boxContent__rectangle" />
+            <ImageIcon onClick={handleClick} id={"image"} />
+            <input
+              type="file"
+              style={{ display: "none" }}
+              onChange={handleApprentImg}
+              ref={inputFileRef}
+            />
           </div>
           <input
             id="boxInput"
@@ -242,7 +261,7 @@ const BoxContent = ({ id }) => {
           {usersAdmin.map((user) => (
             <div className="user__linkedin">
               <div className="user__profile">
-                <div className="user__profile-rectangle" />
+                <img src={file} className="user__profile-rectangle" />
                 <p key={user.userName} className="user__profile-name">
                   {user.userName}
                 </p>

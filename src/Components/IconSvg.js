@@ -390,9 +390,10 @@ export const InfoCircle = ({ id }) => {
 
 // image icon
 
-export const ImageIcon = ({ id }) => {
+export const ImageIcon = ({ id, onClick }) => {
   return (
     <svg
+      onClick={onClick}
       id={id}
       width="28"
       height="28"
