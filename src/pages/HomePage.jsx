@@ -56,7 +56,7 @@ const HomePage = ({ title }) => {
           </Button>
         </div>
         <div className="home__boxes">
-          {boxItems.map((box) => {
+          {boxItems?.map((box) => {
             return <ApprenBox key={box.id} />;
           })}
         </div>

@@ -47,3 +47,26 @@
     fill: none;
     stroke: #fff;
 }
+
+
+/* publishing apprenitceship modal style */
+
+.publish {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    gap: 2.5em;
+}
+
+.publish__icon {
+    font-size: 11em;
+}
+
+
+.publish__text {
+    font-size: 1.7em;
+    font-weight: 400;
+    max-width: 100%;
+}

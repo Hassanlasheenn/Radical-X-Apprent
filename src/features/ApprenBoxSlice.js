@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  boxItems: [
-    {
-      id: 1,
-      title: "Mobile App Development",
-      position: "React Native Developer",
-    },
-  ],
+  boxItems: [],
   title: "",
   position: "",
   apprentDescription: "",
@@ -18,6 +12,20 @@ const apprenBoxSlice = createSlice({
   name: "apprenBox",
   initialState,
   reducers: {
+    setTitle: (state, action) => {
+      state.title = action.payload;
+    },
+    setPosition: (state, action) => {
+      state.position = action.payload;
+    },
+    setApprentDesc: (state, action) => {
+      state.apprentDescription = action.payload;
+    },
+
+    addAppren: (state, action) => {
+      state.boxItems.push(action.payload);
+    },
+
     duplicate: (state, action) => {
       const boxItem = action.payload;
       const itemToDuplicate = state.boxItems.find(
@@ -37,5 +45,18 @@ const apprenBoxSlice = createSlice({
   },
 });
 
-export const { duplicate, erase } = apprenBoxSlice.actions;
+export const {
+  duplicate,
+  erase,
+  setTitle,
+  setPosition,
+  setApprentDesc,
+  addAppren,
+} = apprenBoxSlice.actions;
+
+export const selectTitle = (state) => state.appren.title;
+export const selectPosition = (state) => state.appren.position;
+export const selectApprenDesc = (state) => state.appren.apprentDescription;
+export const selectAppren = (state) => state.appren.boxItems;
+
 export default apprenBoxSlice.reducer;

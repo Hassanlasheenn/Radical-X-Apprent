@@ -36,7 +36,14 @@ import {
   setTeamRole,
 } from "../features/TickSlice";
 import { addUser } from "../features/AdminSlice";
-import { duplicate, erase } from "../features/ApprenBoxSlice";
+import {
+  duplicate,
+  erase,
+  selectApprenDesc,
+  selectTitle,
+  setApprentDesc,
+  setTitle,
+} from "../features/ApprenBoxSlice";
 import {
   addRole,
   addRequiredSkill,
@@ -69,6 +76,9 @@ const BoxContent = ({ id, handleFile }) => {
   const roleComplimentarySkills = useSelector(
     (state) => state.role.complimentarySkills
   );
+
+  const apprenTitle = useSelector(selectTitle);
+  const apprenDesc = useSelector(selectApprenDesc);
 
   const dispatch = useDispatch();
 
@@ -109,6 +119,14 @@ const BoxContent = ({ id, handleFile }) => {
     }
   };
 
+  const handleApprenTitle = (e) => {
+    dispatch(setTitle(e.target.value));
+  };
+
+  const handleApprenDesc = (e) => {
+    dispatch(setApprentDesc(e.target.value));
+  };
+
   return (
     <div className="boxContent">
       <CreateBox boxTitle={"Company Logo & Apprenticeship Title"}>
@@ -127,6 +145,8 @@ const BoxContent = ({ id, handleFile }) => {
             id="boxInput"
             type="text"
             placeholder="Enter Apprenticeship Title"
+            value={apprenTitle}
+            onChange={handleApprenTitle}
           />
         </div>
       </CreateBox>
@@ -137,7 +157,13 @@ const BoxContent = ({ id, handleFile }) => {
       </CreateBox>
       <CreateBox boxTitle={"Apprenticeship Description"}>
         <div className="boxContent__form">
-          <textarea id="boxInput" type="text" placeholder="Enter Description" />
+          <textarea
+            id="boxInput"
+            type="text"
+            placeholder="Enter Description"
+            value={apprenDesc}
+            onChange={handleApprenDesc}
+          />
         </div>
       </CreateBox>
       <CreateBox
