@@ -13,13 +13,6 @@ import {
 } from "../features/ApprenBoxSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-// const savedTitles = localStorage.getItem("Title Name")
-//   ? JSON.parse(localStorage.getItem("Title Name"))
-//   : [];
-// const savedPositions = localStorage.getItem("Position Name")
-//   ? JSON.parse(localStorage.getItem("Position Name"))
-//   : [];
-
 const ApprenBox = ({ id }) => {
   const [show, setShow] = useState(false);
   // const [title, setTitle] = useState(savedTitles);
@@ -37,18 +30,6 @@ const ApprenBox = ({ id }) => {
     e.preventDefault();
   };
 
-  // useEffect(() => {
-  //   if (!!title) {
-  //     localStorage.setItem("Title Name", JSON.stringify(title));
-  //   }
-  // }, [title]);
-
-  // useEffect(() => {
-  //   if (!!position) {
-  //     localStorage.setItem("Position Name", JSON.stringify(position));
-  //   }
-  // }, [position]);
-
   return (
     <div className="box-container">
       <div className="box">
@@ -65,7 +46,7 @@ const ApprenBox = ({ id }) => {
             <BoxIcon3
               id={"delete"}
               onClick={() => {
-                dispatch(erase(id));
+                dispatch(erase({ id }));
               }}
             />
           </div>

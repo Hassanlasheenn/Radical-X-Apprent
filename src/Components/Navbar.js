@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   addAppren,
-  addPositions,
   selectApprenDesc,
-  selectPosition,
-  selectPositions,
   selectTitle,
 } from "../features/ApprenBoxSlice";
 import "../styles/Navbar.css";

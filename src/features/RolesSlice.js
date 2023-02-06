@@ -15,7 +15,9 @@ const rolesSlice = createSlice({
   initialState,
   reducers: {
     addRole: (state, action) => {
-      state.roles.push(action.payload);
+      if (!state.roles.includes(action.payload)) {
+        state.roles = [...new Set([...state.roles, action.payload])];
+      }
     },
     setRole: (state, action) => {
       state.role = action.payload;
@@ -24,13 +26,21 @@ const rolesSlice = createSlice({
       state.description = action.payload;
     },
     addRequiredSkill: (state, action) => {
-      state.requiredSkill.push(action.payload);
+      if (!state.requiredSkill.includes(action.payload)) {
+        state.requiredSkill = [
+          ...new Set([...state.requiredSkill, action.payload]),
+        ];
+      }
     },
     setRequiredSkill: (state, action) => {
       state.requiredSkills = action.payload;
     },
     addComplimentarySkill: (state, action) => {
-      state.complimentarySkill.push(action.payload);
+      if (!state.complimentarySkill.includes(action.payload)) {
+        state.complimentarySkill = [
+          ...new Set([...state.complimentarySkill, action.payload]),
+        ];
+      }
     },
     setComplimentarySkill: (state, action) => {
       state.complimentarySkills = action.payload;

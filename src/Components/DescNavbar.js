@@ -12,11 +12,12 @@ import DescNavTitles from "./DescNavTitles";
 import { TickCircle, UnTickCircle } from "./IconSvg";
 
 const DescNavbar = () => {
+  // main ticks
   const companyTick = useSelector(selectCompanyTick);
   const teamTypeTick = useSelector(selectTeamTick);
-  const dateTick = useSelector(selectTimeLineTick);
-  const adminTick = useSelector(selectAdminTick);
   const roleTick = useSelector(selectRoleTick);
+  const adminTick = useSelector(selectAdminTick);
+  const dateTick = useSelector(selectTimeLineTick);
 
   return (
     <div className="desc">

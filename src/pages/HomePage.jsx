@@ -48,6 +48,7 @@ const HomePage = ({ title }) => {
           <p className="home__right-title">apprenticeship</p>
           <AddSquare id={"add"} />
           <Button
+            className={"home__right-button"}
             onClick={() => {
               navigate("/create");
             }}

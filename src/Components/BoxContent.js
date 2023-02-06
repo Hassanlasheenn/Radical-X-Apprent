@@ -35,7 +35,7 @@ import {
   setTeamAdmin,
   setTeamRole,
 } from "../features/TickSlice";
-import { addUser } from "../features/AdminSlice";
+import { addUser, setAdminImg } from "../features/AdminSlice";
 import {
   addPositions,
   duplicate,
@@ -51,7 +51,7 @@ import {
   addComplimentarySkill,
 } from "../features/RolesSlice";
 
-const BoxContent = ({ id, handleFile }) => {
+const BoxContent = ({ id }) => {
   const [show, setShow] = useState(false);
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
@@ -69,6 +69,7 @@ const BoxContent = ({ id, handleFile }) => {
   const userComplimentarySkills = useSelector(
     (state) => state.role.complimentarySkill
   );
+  const userImage = useSelector((state) => state.admin.image);
   const userPosition = useSelector((state) => state.appren.position);
 
   const userName = useSelector((state) => state.admin.name);
@@ -289,7 +290,7 @@ const BoxContent = ({ id, handleFile }) => {
           {usersAdmin.map((user) => (
             <div className="user__linkedin">
               <div className="user__profile">
-                <img src={file} className="user__profile-rectangle" />
+                <img src={user.userImage} className="user__profile-rectangle" />
                 <p key={user.userName} className="user__profile-name">
                   {user.userName}
                 </p>
@@ -354,7 +355,7 @@ const BoxContent = ({ id, handleFile }) => {
         <Modal
           title={"Add Team Admin"}
           onSave={() => {
-            dispatch(addUser({ userName }));
+            dispatch(addUser({ userName, userImage }));
             dispatch(changeAdminIcon(true));
             setShowAdmin(false);
           }}

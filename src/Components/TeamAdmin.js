@@ -2,29 +2,32 @@ import React, { useEffect, useRef, useState } from "react";
 import { ProfileIcon, ImageIcon, EmailIcon, LinkIcon } from "./IconSvg";
 import "../styles/TeamAdmin.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, setAdminName } from "../features/AdminSlice";
+import { addUser, setAdminImg, setAdminName } from "../features/AdminSlice";
 
 const TeamAdmin = ({ title }) => {
-  const [userImg, setUserImg] = useState(null);
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.admin.name);
+  const userImg = useSelector((state) => state.admin.image);
   const inputUserRef = useRef(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(addUser({ userName }));
-  };
 
   useEffect(() => {
     document.title = title;
   }, [title]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addUser({ userName }));
+    dispatch(setAdminImg({ userImg }));
+  };
 
   const handleClick = (e) => {
     inputUserRef.current.click();
   };
 
   const handleUserImg = (e) => {
-    const fileObj = setUserImg(URL.createObjectURL(e.target.files[0]));
+    const fileObj = dispatch(
+      setAdminImg(URL.createObjectURL(e.target.files[0]))
+    );
     if (!fileObj) {
       return null;
     }
