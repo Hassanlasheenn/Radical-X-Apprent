@@ -22,7 +22,7 @@ const ApprenBox = ({ id }) => {
   const apprenDesc = useSelector(selectApprenDesc);
   const apprenPosition = useSelector(selectPositions);
 
-  const userPosition = useSelector((state) => state.appren.position);
+  // const userPosition = useSelector((state) => state.appren.position);
 
   const dispatch = useDispatch();
 
@@ -54,11 +54,13 @@ const ApprenBox = ({ id }) => {
         <p className="box__para"> {apprenDesc}</p>
         {apprenPosition.length > 0 &&
           apprenPosition.map((position) => {
-            <div className="box__text-cont">
-              <p key={position.userPosition} className="box__text">
-                {position}
-              </p>
-            </div>;
+            return (
+              <div className="box__text-cont">
+                <p key={position.userPosition} className="box__text">
+                  {position}
+                </p>
+              </div>
+            );
           })}
       </div>
       <Modal

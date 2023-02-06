@@ -35,7 +35,7 @@ import {
   setTeamAdmin,
   setTeamRole,
 } from "../features/TickSlice";
-import { addUser, setAdminImg } from "../features/AdminSlice";
+import { addUser } from "../features/AdminSlice";
 import {
   addPositions,
   duplicate,
