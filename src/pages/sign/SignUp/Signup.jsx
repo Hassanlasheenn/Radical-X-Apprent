@@ -6,10 +6,11 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import { lock } from "react-icons-kit/feather/lock";
 import { mail } from "react-icons-kit/feather/mail";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Context/Auth";
 
 const Signup = ({ title }) => {
+  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -33,7 +34,8 @@ const Signup = ({ title }) => {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      setMessage("Created account successfully");
+      // setMessage("Created account successfully");
+      navigate("/login");
     } catch {
       setError("Failed to create account");
       setMessage("");
