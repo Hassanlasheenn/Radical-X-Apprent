@@ -76,7 +76,15 @@
     margin-bottom: .6rem;
 }
 
+
+
 /* box text */
+.box__text--position-cont {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 .box__text-cont {
     box-sizing: border-box;

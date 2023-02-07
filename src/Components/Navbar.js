@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   addAppren,
+  addPositions,
   selectApprenDesc,
   selectTitle,
 } from "../features/ApprenBoxSlice";
@@ -32,6 +33,7 @@ const Navbar = () => {
       <AddSquare id={"publish"} />
       <Button
         onClick={() => {
+          navigate("/");
           setPublish(true);
           dispatch(addAppren({ apprenTitle, apprenDesc, userPosition }));
         }}

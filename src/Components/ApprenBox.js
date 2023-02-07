@@ -9,20 +9,18 @@ import {
   selectApprenDesc,
   selectPositions,
   selectTitle,
+  setPosition,
   setTitle,
 } from "../features/ApprenBoxSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ApprenBox = ({ id }) => {
   const [show, setShow] = useState(false);
-  // const [title, setTitle] = useState(savedTitles);
-  // const [position, setPosition] = useState(savedPositions);
 
   const apprenTitle = useSelector(selectTitle);
   const apprenDesc = useSelector(selectApprenDesc);
   const apprenPosition = useSelector(selectPositions);
-
-  // const userPosition = useSelector((state) => state.appren.position);
+  const userPosition = useSelector((state) => state.appren.position);
 
   const dispatch = useDispatch();
 
@@ -53,12 +51,12 @@ const ApprenBox = ({ id }) => {
         </div>
         <p className="box__para"> {apprenDesc}</p>
         {apprenPosition.length > 0 &&
-          apprenPosition.map((position) => {
+          apprenPosition.map((rolePosition) => {
             return (
-              <div className="box__text-cont">
-                <p key={position.userPosition} className="box__text">
-                  {position}
-                </p>
+              <div className="box__text--position-cont">
+                <div className="box__text-cont">
+                  <p className="box__text">{rolePosition.userPosition}</p>
+                </div>
               </div>
             );
           })}
@@ -84,7 +82,7 @@ const ApprenBox = ({ id }) => {
             className="modal-body__input"
             type="text"
             placeholder="Type here"
-            // onChange={(e) => dispatch(setPosition(e.target.value))}
+            onChange={(e) => dispatch(setPosition(e.target.value))}
             required
           />
         </form>
