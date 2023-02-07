@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   addAppren,
-  addPositions,
   selectApprenDesc,
+  selectNotification,
   selectTitle,
+  setNotification,
 } from "../features/ApprenBoxSlice";
 import "../styles/Navbar.css";
 import BackBtn from "./BackBtn";
 import Button from "./Button";
 import { AddSquare } from "./IconSvg";
 import Modal from "./Modal";
+import Notification from "./Notification";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -21,6 +23,13 @@ const Navbar = () => {
   const userPosition = useSelector((state) => state.appren.position);
 
   const dispatch = useDispatch();
+
+  // const handleNotification = () => {
+  //   dispatch(setNotification(true));
+  //   setTimeout(() => {
+  //     dispatch(setNotification(false));
+  //   }, 3000);
+  // };
 
   return (
     <div className="navbar">
@@ -40,20 +49,6 @@ const Navbar = () => {
       >
         Publish Apprenticeship
       </Button>
-
-      <Modal
-        btnName={"Close"}
-        onCloseModal={() => setPublish(false)}
-        onSave={() => setPublish(false)}
-        show={publish}
-      >
-        <div className="publish">
-          <p className="publish__icon">🎉</p>
-          <h2 className="publish__text">
-            ApprenticeShip is published successfully
-          </h2>
-        </div>
-      </Modal>
     </div>
   );
 };

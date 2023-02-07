@@ -14,7 +14,9 @@ import {
 } from "../Components/IconSvg";
 import Button from "../Components/Button";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectNotification } from "../features/ApprenBoxSlice";
+import Notification from "../Components/Notification";
 
 const HomePage = ({ title }) => {
   useEffect(() => {
@@ -23,6 +25,8 @@ const HomePage = ({ title }) => {
   const { boxItems } = useSelector((store) => store.appren);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+  const apprenNotify = useSelector(selectNotification);
+  const dispatch = useDispatch();
 
   return (
     <div className="home">
@@ -62,6 +66,8 @@ const HomePage = ({ title }) => {
           })}
         </div>
       </div>
+
+      {apprenNotify && <Notification />}
     </div>
   );
 };

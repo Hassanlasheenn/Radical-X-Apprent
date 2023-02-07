@@ -6,7 +6,7 @@ const initialState = {
   positions: [],
   position: "",
   apprentDescription: "",
-  isLoading: true,
+  notification: false,
 };
 
 const apprenBoxSlice = createSlice({
@@ -27,6 +27,9 @@ const apprenBoxSlice = createSlice({
     },
     addAppren: (state, action) => {
       state.boxItems.push(action.payload);
+    },
+    setNotification: (state, action) => {
+      state.notification = action.payload;
     },
 
     duplicate: (state, action) => {
@@ -56,11 +59,13 @@ export const {
   addAppren,
   addPositions,
   setPosition,
+  setNotification,
 } = apprenBoxSlice.actions;
 
 export const selectTitle = (state) => state.appren.title;
 export const selectApprenDesc = (state) => state.appren.apprentDescription;
 export const selectAppren = (state) => state.appren.boxItems;
 export const selectPositions = (state) => state.appren.positions;
+export const selectNotification = (state) => state.appren.notification;
 
 export default apprenBoxSlice.reducer;
