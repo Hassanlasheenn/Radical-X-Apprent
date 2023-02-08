@@ -12,7 +12,6 @@ import "../styles/Navbar.css";
 import BackBtn from "./BackBtn";
 import Button from "./Button";
 import { AddSquare } from "./IconSvg";
-import Modal from "./Modal";
 import Notification from "./Notification";
 
 const Navbar = () => {

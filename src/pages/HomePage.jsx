@@ -25,8 +25,8 @@ const HomePage = ({ title }) => {
   const { boxItems } = useSelector((store) => store.appren);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  const apprenNotify = useSelector(selectNotification);
-  const dispatch = useDispatch();
+  // const apprenNotify = useSelector(selectNotification);
+  // const dispatch = useDispatch();
 
   return (
     <div className="home">
@@ -66,8 +66,6 @@ const HomePage = ({ title }) => {
           })}
         </div>
       </div>
-
-      {apprenNotify && <Notification />}
     </div>
   );
 };

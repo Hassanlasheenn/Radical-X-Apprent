@@ -28,7 +28,7 @@ const rolesSlice = createSlice({
     addRequiredSkill: (state, action) => {
       if (!state.requiredSkill.includes(action.payload)) {
         state.requiredSkill = [
-          ...new Set([...state.requiredSkill, action.payload]),
+          ...new Set([...state.requiredSkill, { ...action.payload }]),
         ];
       }
     },
