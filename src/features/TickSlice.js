@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   icons: {
@@ -9,7 +9,7 @@ const initialState = {
     teamRoleTick: false,
   },
   values: {
-    companyTitle: "",
+    companyTitle: '',
     teamType: false,
     selectedDate: new Date(),
     teamAdmin: [],
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 const tickSlice = createSlice({
-  name: "tickSign",
+  name: 'tickSign',
   initialState,
   reducers: {
     setCompanyTitle: (state, action) => {

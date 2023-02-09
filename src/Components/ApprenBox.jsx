@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import "../styles/ApprenBox.css";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-undef */
+/* eslint-disable react/function-component-definition */
+import React, { useState } from 'react';
+import '../styles/ApprenBox.css';
 // icons svg
-import { BoxIcon1, BoxIcon2, BoxIcon3 } from "./IconSvg";
-import Modal from "./Modal";
+import { useDispatch, useSelector } from 'react-redux';
+import { BoxIcon1, BoxIcon2, BoxIcon3 } from './IconSvg';
+import Modal from './Modal';
 import {
   duplicate,
   erase,
@@ -11,8 +15,7 @@ import {
   selectTitle,
   setPosition,
   setTitle,
-} from "../features/ApprenBoxSlice";
-import { useDispatch, useSelector } from "react-redux";
+} from '../features/ApprenBoxSlice';
 
 const ApprenBox = ({ id }) => {
   const [show, setShow] = useState(false);
@@ -20,7 +23,6 @@ const ApprenBox = ({ id }) => {
   const apprenTitle = useSelector(selectTitle);
   const apprenDesc = useSelector(selectApprenDesc);
   const apprenPosition = useSelector(selectPositions);
-  const userPosition = useSelector((state) => state.appren.position);
 
   const dispatch = useDispatch();
 
@@ -34,15 +36,15 @@ const ApprenBox = ({ id }) => {
         <div className="box__title-bar">
           <p className="box__title">{apprenTitle}</p>
           <div className="box__icons">
-            <BoxIcon1 id={"write"} onClick={() => setShow(true)} />
+            <BoxIcon1 id="write" onClick={() => setShow(true)} />
             <BoxIcon2
-              id={"duplicate"}
+              id="duplicate"
               onClick={() => {
                 dispatch(duplicate({ id }));
               }}
             />
             <BoxIcon3
-              id={"delete"}
+              id="delete"
               onClick={() => {
                 dispatch(erase({ id }));
               }}
@@ -51,19 +53,17 @@ const ApprenBox = ({ id }) => {
         </div>
         <p className="box__para"> {apprenDesc}</p>
         {apprenPosition.length > 0 &&
-          apprenPosition.map((rolePosition) => {
-            return (
-              <div className="box__text--position-cont">
-                <div className="box__text-cont">
-                  <p className="box__text">{rolePosition.userPosition}</p>
-                </div>
+          apprenPosition.map((rolePosition) => (
+            <div className="box__text--position-cont">
+              <div className="box__text-cont">
+                <p className="box__text">{rolePosition.userPosition}</p>
               </div>
-            );
-          })}
+            </div>
+          ))}
       </div>
       <Modal
-        title={"Edit Card"}
-        btnName={"Save"}
+        title="Edit Card"
+        btnName="Save"
         onCloseModal={() => setShow(false)}
         onSave={() => setShow(false)}
         show={show}

@@ -1,6 +1,15 @@
-import React, { useRef, useState } from "react";
-import "../styles/BoxContent.css";
-import CreateBox from "./CreateBox";
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable consistent-return */
+/* eslint-disable no-undef */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-key */
+import React, { useRef, useState } from 'react';
+import '../styles/BoxContent.css';
+import { useDispatch, useSelector } from 'react-redux';
+import CreateBox from './CreateBox';
 import {
   AddCircle,
   BoxIcon1,
@@ -16,14 +25,13 @@ import {
   MonitorIcon,
   PrototypeIcon,
   UploadIcon,
-} from "./IconSvg";
-import TeamBox from "./TeamBox";
-import Linkedin from "../imgs/LinkedIn logo.svg";
-import DateInput from "./DateInput";
-import Modal from "./Modal";
-import { useDispatch, useSelector } from "react-redux";
-import TeamRoles from "./TeamRoles";
-import TeamAdmin from "./TeamAdmin";
+} from './IconSvg';
+import TeamBox from './TeamBox';
+import Linkedin from '../imgs/LinkedIn logo.svg';
+import DateInput from './DateInput';
+import Modal from './Modal';
+import TeamRoles from './TeamRoles';
+import TeamAdmin from './TeamAdmin';
 import {
   changeAdminIcon,
   changeRoleIcon,
@@ -34,8 +42,8 @@ import {
   setCompanyTitle,
   setTeamAdmin,
   setTeamRole,
-} from "../features/TickSlice";
-import { addUser } from "../features/AdminSlice";
+} from '../features/TickSlice';
+import { addUser } from '../features/AdminSlice';
 import {
   addPositions,
   duplicate,
@@ -44,14 +52,15 @@ import {
   selectTitle,
   setApprentDesc,
   setTitle,
-} from "../features/ApprenBoxSlice";
+} from '../features/ApprenBoxSlice';
 import {
   addRole,
   addRequiredSkill,
   addComplimentarySkill,
-} from "../features/RolesSlice";
+} from '../features/RolesSlice';
 
-const BoxContent = ({ id }) => {
+// eslint-disable-next-line react/prop-types
+function BoxContent({ id }) {
   const [show, setShow] = useState(false);
   const [showRoles, setShowRoles] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
@@ -111,7 +120,7 @@ const BoxContent = ({ id }) => {
     }
   };
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     inputFileRef.current.click();
   };
 
@@ -132,14 +141,14 @@ const BoxContent = ({ id }) => {
 
   return (
     <div className="boxContent">
-      <CreateBox boxTitle={"Company Logo & Apprenticeship Title"}>
+      <CreateBox boxTitle="Company Logo & Apprenticeship Title">
         <div className="boxContent__form">
           <div className="boxContent__rectangle-cont">
-            <img src={file} className="boxContent__rectangle" />
-            <ImageIcon onClick={handleClick} id={"image"} />
+            <img src={file} className="boxContent__rectangle" alt="" />
+            <ImageIcon onClick={handleClick} id="image" />
             <input
               type="file"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               onChange={handleApprentImg}
               ref={inputFileRef}
             />
@@ -153,12 +162,12 @@ const BoxContent = ({ id }) => {
           />
         </div>
       </CreateBox>
-      <CreateBox boxTitle={"Company Description"}>
+      <CreateBox boxTitle="Company Description">
         <div className="boxContent__form">
           <textarea id="boxInput" type="text" placeholder="Enter Description" />
         </div>
       </CreateBox>
-      <CreateBox boxTitle={"Apprenticeship Description"}>
+      <CreateBox boxTitle="Apprenticeship Description">
         <div className="boxContent__form">
           <textarea
             id="boxInput"
@@ -173,16 +182,14 @@ const BoxContent = ({ id }) => {
         boxTitle={"Introduce yourself, your company, and what you're building."}
       >
         <div className="boxContent__form">
-          <div
-            className="boxContent__input"
-            onClick={() => this.fileInput.click()}
-          >
+          <div className="boxContent__input" onClick={() => fileInput.click()}>
             <label className="boxContent__label">
               Drag n drop to upload your video
             </label>
             <UploadIcon />
           </div>
           <input
+            // eslint-disable-next-line no-undef
             type="file"
             placeholder="Enter Description"
             value={companyTitleValue}
@@ -196,49 +203,49 @@ const BoxContent = ({ id }) => {
                   setSelectedFiles(null);
                   dispatch(changeTitleIcon(false));
                 }}
-                id={"deleteFile"}
+                id="deleteFile"
               />
             </div>
           )}
         </div>
       </CreateBox>
-      <CreateBox boxTitle={"Team Type"}>
+      <CreateBox boxTitle="Team Type">
         <div className="boxContent__teamType">
-          <TeamBox teamName={"Web Platform"} image={<MonitorIcon />} />
-          <TeamBox teamName={"Mobile App"} image={<MobileIcon />} />
-          <TeamBox teamName={"Growth"} image={<GrowthIcon />} />
-          <TeamBox teamName={"Marketing Website"} image={<KeyboardIcon />} />
-          <TeamBox teamName={"Prototyping"} image={<PrototypeIcon />} />
-          <TeamBox teamName={"Data"} image={<DataIcon />} />
-          <TeamBox teamName={"Custom Team"} image={<CustomIcon />} />
+          <TeamBox teamName="Web Platform" image={<MonitorIcon />} />
+          <TeamBox teamName="Mobile App" image={<MobileIcon />} />
+          <TeamBox teamName="Growth" image={<GrowthIcon />} />
+          <TeamBox teamName="Marketing Website" image={<KeyboardIcon />} />
+          <TeamBox teamName="Prototyping" image={<PrototypeIcon />} />
+          <TeamBox teamName="Data" image={<DataIcon />} />
+          <TeamBox teamName="Custom Team" image={<CustomIcon />} />
         </div>
       </CreateBox>
-      <CreateBox boxTitle={"Team Roles"}>
+      <CreateBox boxTitle="Team Roles">
         <button
           onClick={() => setShowRoles(true)}
           className="role__dashedCont--roles"
         >
-          <AddCircle id={"circle"} />
+          <AddCircle id="circle" />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
 
         <div className="role__container" onChange={handleRoleUsers}>
-          {userRoles?.map((userRole) => (
+          {userRoles.map((userRole) => (
             <div className="role">
               <div className="role__title-bar">
                 <p key={userRole.roleName} className="role__title">
                   {userRole.roleName}
                 </p>
                 <div className="role__icons">
-                  <BoxIcon1 id={"write"} onClick={() => setShow(true)} />
+                  <BoxIcon1 id="write" onClick={() => setShow(true)} />
                   <BoxIcon2
-                    id={"duplicate"}
+                    id="duplicate"
                     onClick={() => {
                       dispatch(duplicate({ id }));
                     }}
                   />
                   <BoxIcon3
-                    id={"delete"}
+                    id="delete"
                     onClick={() => {
                       dispatch(erase(id));
                     }}
@@ -278,19 +285,23 @@ const BoxContent = ({ id }) => {
           ))}
         </div>
       </CreateBox>
-      <CreateBox boxTitle={"Team Admin"}>
+      <CreateBox boxTitle="Team Admin">
         <button
           onClick={() => setShowAdmin(true)}
           className="role__dashedCont--admin"
         >
-          <AddCircle id={"circle"} />
+          <AddCircle id="circle" />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
         <div className="user__container" onChange={handleAdminUsers}>
           {usersAdmin.map((user) => (
             <div className="user__linkedin">
               <div className="user__profile">
-                <img src={user.userImage} className="user__profile-rectangle" />
+                <img
+                  src={user.userImage}
+                  className="user__profile-rectangle"
+                  alt=""
+                />
                 <p key={user.userName} className="user__profile-name">
                   {user.userName}
                 </p>
@@ -300,7 +311,7 @@ const BoxContent = ({ id }) => {
           ))}
         </div>
       </CreateBox>
-      <CreateBox boxTitle={"Timeline"}>
+      <CreateBox boxTitle="Timeline">
         <div className="boxContent__timeline">
           <DateInput />
         </div>
@@ -309,7 +320,7 @@ const BoxContent = ({ id }) => {
       {/* Modals conditions to switch between them */}
       {showRoles ? (
         <Modal
-          title={"Add Role"}
+          title="Add Role"
           onSave={() => {
             dispatch(addRole({ roleName, roleDescription }));
             dispatch(addRequiredSkill({ roleRequiredSkills }));
@@ -320,14 +331,14 @@ const BoxContent = ({ id }) => {
           }}
           onCloseModal={() => setShowRoles(false)}
           show={showRoles}
-          btnName={"Save"}
+          btnName="Save"
         >
-          <TeamRoles title={"RadicalX | Add Roles"} />
+          <TeamRoles title="RadicalX | Add Roles" />
         </Modal>
       ) : show ? (
         <Modal
-          title={"Edit Card"}
-          btnName={"Save"}
+          title="Edit Card"
+          btnName="Save"
           onCloseModal={() => setShow(false)}
           onSave={() => setShow(false)}
           show={show}
@@ -338,7 +349,7 @@ const BoxContent = ({ id }) => {
               className="modal-body__input"
               type="text"
               placeholder="Type here"
-              onChange={(e) => dispatch(addRole({ roleName }))}
+              onChange={() => dispatch(addRole({ roleName }))}
               required
             />
             <p className="modal-body__title">Enter Position Title</p>
@@ -346,14 +357,14 @@ const BoxContent = ({ id }) => {
               className="modal-body__input"
               type="text"
               placeholder="Type here"
-              onChange={(e) => dispatch(addRole({ roleDescription }))}
+              onChange={() => dispatch(addRole({ roleDescription }))}
               required
             />
           </form>
         </Modal>
       ) : (
         <Modal
-          title={"Add Team Admin"}
+          title="Add Team Admin"
           onSave={() => {
             dispatch(addUser({ userName, userImage }));
             dispatch(changeAdminIcon(true));
@@ -361,13 +372,13 @@ const BoxContent = ({ id }) => {
           }}
           onCloseModal={() => setShowAdmin(false)}
           show={showAdmin}
-          btnName={"Save"}
+          btnName="Save"
         >
-          <TeamAdmin title={"RadicalX | Add Admins"} />
+          <TeamAdmin title="RadicalX | Add Admins" />
         </Modal>
       )}
     </div>
   );
-};
+}
 
 export default BoxContent;

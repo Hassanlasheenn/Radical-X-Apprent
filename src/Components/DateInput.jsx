@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { DateIcon } from "./IconSvg";
-import { useSelector, useDispatch } from "react-redux";
+/* eslint-disable react/function-component-definition */
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { DateIcon } from './IconSvg';
 import {
   setSelectedDate,
   selectSelectedDate,
   changeTimeLineIcon,
-} from "../features/TickSlice";
+} from '../features/TickSlice';
 
 const DateInput = () => {
   const [dateStart, setDateStart] = useState(null);
@@ -31,7 +32,7 @@ const DateInput = () => {
           selected={dateStart}
           onChange={(date) => setDateStart(date)}
         />
-        <DateIcon id={"date-start"} />
+        <DateIcon id="date-start" />
       </div>
       <div className="dateCont__end">
         <DatePicker
@@ -41,7 +42,7 @@ const DateInput = () => {
           onChange={handleDateEnd}
           value={selectedDateEnd}
         />
-        <DateIcon id={"date-end"} />
+        <DateIcon id="date-end" />
       </div>
     </div>
   );

@@ -1,13 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useAuth } from "../../Context/Auth";
-import RadicalX from "../../imgs/RadicallX-Black-Logo 1.svg";
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/function-component-definition */
+import React, { useEffect, useRef, useState } from 'react';
+import { useAuth } from '../../Context/Auth';
+import RadicalX from '../../imgs/RadicallX-Black-Logo 1.svg';
 
 const ForgotPass = ({ title }) => {
   const emailRef = useRef(null);
   const { resetPass } = useAuth();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     document.title = title;
@@ -17,20 +21,20 @@ const ForgotPass = ({ title }) => {
     e.preventDefault();
 
     try {
-      setMessage("");
-      setError("");
+      setMessage('');
+      setError('');
       setLoading(true);
       await resetPass(emailRef.current.value);
-      setMessage("Check your inbox for further instructions");
+      setMessage('Check your inbox for further instructions');
     } catch {
-      setError("Failed to reset password");
+      setError('Failed to reset password');
     }
     setLoading(false);
   };
 
   return (
     <div className="login">
-      <div className="left"></div>
+      <div className="left" />
       <div className="right">
         <img className="right__image" src={RadicalX} alt="" />
 

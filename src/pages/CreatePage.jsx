@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
-import BoxContent from "../Components/BoxContent";
-import DescNavbar from "../Components/DescNavbar";
-import Navbar from "../Components/Navbar";
-import "../styles/CreatePage.css";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-undef */
+/* eslint-disable react/function-component-definition */
+import React, { useEffect } from 'react';
+import BoxContent from '../Components/BoxContent';
+import DescNavbar from '../Components/DescNavbar';
+import Navbar from '../Components/Navbar';
+import '../styles/CreatePage.css';
 
 const CreatePage = ({ title }) => {
   useEffect(() => {

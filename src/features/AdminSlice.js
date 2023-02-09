@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   admins: [],
-  name: "",
+  name: '',
   image: null,
 };
 
 const adminSlice = createSlice({
-  name: "teamAdmins",
+  name: 'teamAdmins',
   initialState,
   reducers: {
     addUser: (state, action) => {

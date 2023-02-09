@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   roles: [],
-  role: "",
-  description: "",
+  role: '',
+  description: '',
   requiredSkill: [],
   complimentarySkill: [],
-  requiredSkills: "",
-  complimentarySkills: "",
+  requiredSkills: '',
+  complimentarySkills: '',
 };
 
 const rolesSlice = createSlice({
-  name: "teamRoles",
+  name: 'teamRoles',
   initialState,
   reducers: {
     addRole: (state, action) => {

@@ -1,13 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../SignUp/Signup";
-import RadicalX from "../../../imgs/RadicallX-Black-Logo 1.svg";
-import { Icon } from "react-icons-kit";
-import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { eye } from "react-icons-kit/feather/eye";
-import { lock } from "react-icons-kit/feather/lock";
-import { mail } from "react-icons-kit/feather/mail";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../Context/Auth";
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable consistent-return */
+/* eslint-disable no-undef */
+/* eslint-disable import/no-self-import */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/function-component-definition */
+import React, { useEffect, useRef, useState } from 'react';
+import './Signup';
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+import { lock } from 'react-icons-kit/feather/lock';
+import { mail } from 'react-icons-kit/feather/mail';
+import { Link, useNavigate } from 'react-router-dom';
+import RadicalX from '../../../imgs/RadicallX-Black-Logo 1.svg';
+import { useAuth } from '../../../Context/Auth';
 
 const Signup = ({ title }) => {
   const navigate = useNavigate();
@@ -15,8 +23,8 @@ const Signup = ({ title }) => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,39 +35,39 @@ const Signup = ({ title }) => {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
+      return setError('Passwords do not match');
     }
 
     try {
-      setError("");
+      setError('');
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
       // setMessage("Created account successfully");
-      navigate("/login");
+      navigate('/login');
     } catch {
-      setError("Failed to create account");
-      setMessage("");
+      setError('Failed to create account');
+      setMessage('');
     }
 
     setLoading(false);
   };
 
-  const [type, setType] = useState("password");
+  const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
 
   const togglePassword = () => {
-    if (type === "password") {
+    if (type === 'password') {
       setIcon(eye);
-      setType("text");
+      setType('text');
     } else {
       setIcon(eyeOff);
-      setType("password");
+      setType('password');
     }
   };
 
   return (
     <div className="login">
-      <div className="left"></div>
+      <div className="left" />
       <div className="right">
         <img className="right__image" src={RadicalX} alt="" />
         {error && <h3 id="error">{error}</h3>}
@@ -68,7 +76,7 @@ const Signup = ({ title }) => {
           <p className="right__header">Create an Account</p>
           <div className="right__email-container">
             <span id="sms">
-              <Icon icon={mail} size={20}></Icon>
+              <Icon icon={mail} size={20} />
             </span>
             <input
               className="right__input"
@@ -79,7 +87,7 @@ const Signup = ({ title }) => {
           </div>
           <div className="right__pass-container">
             <span id="lock">
-              <Icon icon={lock} size={20}></Icon>
+              <Icon icon={lock} size={20} />
             </span>
             <input
               className="right__input"
@@ -91,11 +99,11 @@ const Signup = ({ title }) => {
               <Icon icon={icon} size={20} />
             </span>
             <span id="lock2">
-              <Icon icon={lock} size={20}></Icon>
+              <Icon icon={lock} size={20} />
             </span>
             <input
               className="right__input-confirm"
-              type={"password"}
+              type="password"
               placeholder="Confirm Password"
               ref={passwordConfirmRef}
             />
@@ -103,7 +111,7 @@ const Signup = ({ title }) => {
           <div className="right__remember-container">
             <p>
               Already a user?
-              <Link to={"/login"} id="signin">
+              <Link to="/login" id="signin">
                 Sign in
               </Link>
             </p>

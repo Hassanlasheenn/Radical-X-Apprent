@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   boxItems: [],
-  title: "",
+  title: '',
   positions: [],
-  position: "",
-  apprentDescription: "",
+  position: '',
+  apprentDescription: '',
   notification: false,
 };
 
 const apprenBoxSlice = createSlice({
-  name: "apprenBox",
+  name: 'apprenBox',
   initialState,
   reducers: {
     setTitle: (state, action) => {
