@@ -1,12 +1,8 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/function-component-definition */
 import React, { useEffect } from 'react';
 import '../styles/HomePage.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import RadicalX from '../imgs/RadicallX-Black-Logo 1.svg';
+import RadicalX from '../assets/RadicallX-Black-Logo.svg';
 import NavLinks from '../Components/NavLinks';
 import ApprenBox from '../Components/ApprenBox';
 import { useAuth } from '../Context/Auth';
@@ -16,7 +12,7 @@ import {
   DashboardIcon,
   InternshipIcon,
   JobsIcon,
-  SettingsIcon,
+  SettingsIcon
 } from '../Components/IconSvg';
 import Button from '../Components/Button';
 
@@ -57,8 +53,7 @@ const HomePage = ({ title }) => {
             className="home__right-button"
             onClick={() => {
               navigate('/create');
-            }}
-          >
+            }}>
             Create New Apprenticeship
           </Button>
         </div>

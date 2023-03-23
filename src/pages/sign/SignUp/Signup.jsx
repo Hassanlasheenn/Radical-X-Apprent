@@ -1,11 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable consistent-return */
-/* eslint-disable no-undef */
-/* eslint-disable import/no-self-import */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/function-component-definition */
 import React, { useEffect, useRef, useState } from 'react';
 import './Signup';
 import { Icon } from 'react-icons-kit';
@@ -14,7 +6,7 @@ import { eye } from 'react-icons-kit/feather/eye';
 import { lock } from 'react-icons-kit/feather/lock';
 import { mail } from 'react-icons-kit/feather/mail';
 import { Link, useNavigate } from 'react-router-dom';
-import RadicalX from '../../../imgs/RadicallX-Black-Logo 1.svg';
+import RadicalX from '../../../assets/RadicallX-Black-Logo.svg';
 import { useAuth } from '../../../Context/Auth';
 
 const Signup = ({ title }) => {
@@ -78,23 +70,13 @@ const Signup = ({ title }) => {
             <span id="sms">
               <Icon icon={mail} size={20} />
             </span>
-            <input
-              className="right__input"
-              type="email"
-              placeholder="Email"
-              ref={emailRef}
-            />
+            <input className="right__input" type="email" placeholder="Email" ref={emailRef} />
           </div>
           <div className="right__pass-container">
             <span id="lock">
               <Icon icon={lock} size={20} />
             </span>
-            <input
-              className="right__input"
-              type={type}
-              placeholder="Password"
-              ref={passwordRef}
-            />
+            <input className="right__input" type={type} placeholder="Password" ref={passwordRef} />
             <span id="eye" onClick={togglePassword}>
               <Icon icon={icon} size={20} />
             </span>

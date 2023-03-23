@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { ProfileIcon, ImageIcon, EmailIcon, LinkIcon } from "./IconSvg";
-import "../styles/TeamAdmin.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser, setAdminImg, setAdminName } from "../features/AdminSlice";
+import React, { useEffect, useRef } from 'react';
+import { ProfileIcon, ImageIcon, EmailIcon, LinkIcon } from './IconSvg';
+import '../styles/TeamAdmin.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, setAdminImg, setAdminName } from '../features/AdminSlice';
 
 const TeamAdmin = ({ title }) => {
   const dispatch = useDispatch();
@@ -25,9 +25,7 @@ const TeamAdmin = ({ title }) => {
   };
 
   const handleUserImg = (e) => {
-    const fileObj = dispatch(
-      setAdminImg(URL.createObjectURL(e.target.files[0]))
-    );
+    const fileObj = dispatch(setAdminImg(URL.createObjectURL(e.target.files[0])));
     if (!fileObj) {
       return null;
     }
@@ -35,18 +33,18 @@ const TeamAdmin = ({ title }) => {
   return (
     <div className="admin">
       <div className="boxContent__rectangle-cont">
-        <img src={userImg} className="boxContent__rectangle" />
-        <ImageIcon onClick={handleClick} id={"image"} />
+        <img src={userImg} className="boxContent__rectangle" alt="user" />
+        <ImageIcon onClick={handleClick} id={'image'} />
         <input
           type="file"
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
           onChange={handleUserImg}
           ref={inputUserRef}
         />
       </div>
       <form onSubmit={handleSubmit} className="hours__input">
         <span>
-          <ProfileIcon id={"clock"} />
+          <ProfileIcon id={'clock'} />
         </span>
         <input
           id="hoursInput"
@@ -59,19 +57,15 @@ const TeamAdmin = ({ title }) => {
       </form>
       <div className="hours__input">
         <span>
-          <EmailIcon id={"clock"} />
+          <EmailIcon id={'clock'} />
         </span>
         <input id="hoursInput" type="text" placeholder="Email address" />
       </div>
       <div className="hours__input">
         <span>
-          <LinkIcon id={"clock"} />
+          <LinkIcon id={'clock'} />
         </span>
-        <input
-          id="hoursInput"
-          type="text"
-          placeholder="LinkedIn URL (optional)"
-        />
+        <input id="hoursInput" type="text" placeholder="LinkedIn URL (optional)" />
       </div>
     </div>
   );

@@ -1,10 +1,6 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/function-component-definition */
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../Context/Auth';
-import RadicalX from '../../imgs/RadicallX-Black-Logo 1.svg';
+import RadicalX from '../../assets/RadicallX-Black-Logo.svg';
 
 const ForgotPass = ({ title }) => {
   const emailRef = useRef(null);
@@ -42,12 +38,7 @@ const ForgotPass = ({ title }) => {
         {message && <h3 id="success">{message}</h3>}
         <form onSubmit={handleSubmit} className="right__form">
           <p className="right__header">Reset Password</p>
-          <input
-            className="right__input"
-            type="email"
-            placeholder="Email"
-            ref={emailRef}
-          />
+          <input className="right__input" type="email" placeholder="Email" ref={emailRef} />
           <button disabled={loading} className="right__button">
             Reset Password
           </button>

@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
-/* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
 import '../styles/ApprenBox.css';
 // icons svg
@@ -14,7 +11,7 @@ import {
   selectPositions,
   selectTitle,
   setPosition,
-  setTitle,
+  setTitle
 } from '../features/ApprenBoxSlice';
 
 const ApprenBox = ({ id }) => {
@@ -66,8 +63,7 @@ const ApprenBox = ({ id }) => {
         btnName="Save"
         onCloseModal={() => setShow(false)}
         onSave={() => setShow(false)}
-        show={show}
-      >
+        show={show}>
         <form onSubmit={handleSubmit} className="modal-body__container">
           <p className="modal-body__title">Enter Box Title</p>
           <input

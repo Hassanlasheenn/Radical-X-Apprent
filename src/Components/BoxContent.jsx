@@ -1,11 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable consistent-return */
-/* eslint-disable no-undef */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/jsx-key */
 import React, { useRef, useState } from 'react';
 import '../styles/BoxContent.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,10 +16,10 @@ import {
   MobileIcon,
   MonitorIcon,
   PrototypeIcon,
-  UploadIcon,
+  UploadIcon
 } from './IconSvg';
 import TeamBox from './TeamBox';
-import Linkedin from '../imgs/LinkedIn logo.svg';
+import Linkedin from '../assets/LinkedIn logo.svg';
 import DateInput from './DateInput';
 import Modal from './Modal';
 import TeamRoles from './TeamRoles';
@@ -41,7 +33,7 @@ import {
   selectTeamAdmin,
   setCompanyTitle,
   setTeamAdmin,
-  setTeamRole,
+  setTeamRole
 } from '../features/TickSlice';
 import { addUser } from '../features/AdminSlice';
 import {
@@ -51,13 +43,9 @@ import {
   selectApprenDesc,
   selectTitle,
   setApprentDesc,
-  setTitle,
+  setTitle
 } from '../features/ApprenBoxSlice';
-import {
-  addRole,
-  addRequiredSkill,
-  addComplimentarySkill,
-} from '../features/RolesSlice';
+import { addRole, addRequiredSkill, addComplimentarySkill } from '../features/RolesSlice';
 
 // eslint-disable-next-line react/prop-types
 function BoxContent({ id }) {
@@ -75,9 +63,7 @@ function BoxContent({ id }) {
   const usersAdmin = useSelector((state) => state.admin.admins);
   const userRoles = useSelector((state) => state.role.roles);
   const userRequiredSkills = useSelector((state) => state.role.requiredSkill);
-  const userComplimentarySkills = useSelector(
-    (state) => state.role.complimentarySkill
-  );
+  const userComplimentarySkills = useSelector((state) => state.role.complimentarySkill);
   const userImage = useSelector((state) => state.admin.image);
   const userPosition = useSelector((state) => state.appren.position);
 
@@ -85,9 +71,7 @@ function BoxContent({ id }) {
   const roleName = useSelector((state) => state.role.role);
   const roleDescription = useSelector((state) => state.role.description);
   const roleRequiredSkills = useSelector((state) => state.role.requiredSkills);
-  const roleComplimentarySkills = useSelector(
-    (state) => state.role.complimentarySkills
-  );
+  const roleComplimentarySkills = useSelector((state) => state.role.complimentarySkills);
 
   const apprenTitle = useSelector(selectTitle);
   const apprenDesc = useSelector(selectApprenDesc);
@@ -178,14 +162,10 @@ function BoxContent({ id }) {
           />
         </div>
       </CreateBox>
-      <CreateBox
-        boxTitle={"Introduce yourself, your company, and what you're building."}
-      >
+      <CreateBox boxTitle={"Introduce yourself, your company, and what you're building."}>
         <div className="boxContent__form">
-          <div className="boxContent__input" onClick={() => fileInput.click()}>
-            <label className="boxContent__label">
-              Drag n drop to upload your video
-            </label>
+          <div className="boxContent__input">
+            <label className="boxContent__label">Drag n drop to upload your video</label>
             <UploadIcon />
           </div>
           <input
@@ -221,10 +201,7 @@ function BoxContent({ id }) {
         </div>
       </CreateBox>
       <CreateBox boxTitle="Team Roles">
-        <button
-          onClick={() => setShowRoles(true)}
-          className="role__dashedCont--roles"
-        >
+        <button onClick={() => setShowRoles(true)} className="role__dashedCont--roles">
           <AddCircle id="circle" />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
@@ -258,10 +235,7 @@ function BoxContent({ id }) {
                 {userRequiredSkills.length > 0
                   ? userRequiredSkills.map((skill) => (
                       <div className="role__text-cont">
-                        <p
-                          key={skill.roleRequiredSkills}
-                          className="role__text"
-                        >
+                        <p key={skill.roleRequiredSkills} className="role__text">
                           {skill.roleRequiredSkills}
                         </p>
                       </div>
@@ -271,10 +245,7 @@ function BoxContent({ id }) {
                 {userComplimentarySkills.length > 0
                   ? userComplimentarySkills.map((skillComp) => (
                       <div className="role__text-cont">
-                        <p
-                          key={skillComp.roleComplimentarySkills}
-                          className="role__text"
-                        >
+                        <p key={skillComp.roleComplimentarySkills} className="role__text">
                           {skillComp.roleComplimentarySkills}
                         </p>
                       </div>
@@ -286,10 +257,7 @@ function BoxContent({ id }) {
         </div>
       </CreateBox>
       <CreateBox boxTitle="Team Admin">
-        <button
-          onClick={() => setShowAdmin(true)}
-          className="role__dashedCont--admin"
-        >
+        <button onClick={() => setShowAdmin(true)} className="role__dashedCont--admin">
           <AddCircle id="circle" />
           <p className="role__dashedCont-name">Add Team Member</p>
         </button>
@@ -297,11 +265,7 @@ function BoxContent({ id }) {
           {usersAdmin.map((user) => (
             <div className="user__linkedin">
               <div className="user__profile">
-                <img
-                  src={user.userImage}
-                  className="user__profile-rectangle"
-                  alt=""
-                />
+                <img src={user.userImage} className="user__profile-rectangle" alt="" />
                 <p key={user.userName} className="user__profile-name">
                   {user.userName}
                 </p>
@@ -331,8 +295,7 @@ function BoxContent({ id }) {
           }}
           onCloseModal={() => setShowRoles(false)}
           show={showRoles}
-          btnName="Save"
-        >
+          btnName="Save">
           <TeamRoles title="RadicalX | Add Roles" />
         </Modal>
       ) : show ? (
@@ -341,8 +304,7 @@ function BoxContent({ id }) {
           btnName="Save"
           onCloseModal={() => setShow(false)}
           onSave={() => setShow(false)}
-          show={show}
-        >
+          show={show}>
           <form onSubmit={handleSubmit} className="modal-body__container">
             <p className="modal-body__title">Enter Box Title</p>
             <input
@@ -372,8 +334,7 @@ function BoxContent({ id }) {
           }}
           onCloseModal={() => setShowAdmin(false)}
           show={showAdmin}
-          btnName="Save"
-        >
+          btnName="Save">
           <TeamAdmin title="RadicalX | Add Admins" />
         </Modal>
       )}

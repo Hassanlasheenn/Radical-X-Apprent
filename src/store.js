@@ -10,6 +10,6 @@ export const store = configureStore({
     appren: ApprenBoxSlice,
     tick: tickReducer,
     admin: adminReducer,
-    role: roleReducer,
-  },
+    role: roleReducer
+  }
 });
